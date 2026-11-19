@@ -1,70 +1,354 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#09080e"><meta name="color-scheme" content="dark">
-<meta name="description" content="Mythic Housing helps agents propose weekday open houses in Delaware. Share MLS numbers for an open house opportunity, with evening and weekend requests considered case by case.">
-<title>Mythic Housing | Open House Hosting</title>
-<script>window.MYTHIC_PARTNER = '<?= partnerToken ?>';</script>
-<style>
-:root{--bg:#09080e;--panel:#17121f;--panel2:#21172d;--white:#fff;--muted:#bbb0c9;--purple:#c69cff;--purple2:#9856e3;--stroke:#403149;--gold:#f1c37f;--red:#ffacb5;--green:#9ce3bb;color-scheme:dark}
-*,*:before,*:after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);line-height:1.55}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}a:hover{color:#e5d0ff}[hidden]{display:none!important}h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.035em;line-height:1.12}h1{font-size:clamp(3.2rem,7.2vw,6.1rem);font-weight:780;margin:22px 0}h2{font-size:clamp(2rem,4vw,3.35rem);font-weight:750;margin:12px 0 18px}h3{font-size:1.2rem;margin:0 0 12px}.muted{color:var(--muted)}.accent{color:var(--purple)}.shell{width:min(1150px,calc(100% - 40px));margin:auto}.screenreader{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.notice-bar{text-align:center;background:#1b1029;color:#d9cae9;padding:10px 16px;font-size:.75rem;font-weight:750;letter-spacing:.12em;border-bottom:1px solid #533774;text-transform:uppercase}.header{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:83px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:.89rem;font-weight:900;letter-spacing:.07em}.brand-symbol{width:43px;height:43px;display:grid;place-items:center;border:1px solid #8d5bc4;border-radius:12px;background:linear-gradient(145deg,#41234d,#170d22);font-family:Georgia,serif;font-size:1.65rem;box-shadow:0 0 35px #7d36c229}.brand-line{display:block;line-height:1.05}.brand-line small{display:block;color:var(--purple);font-size:.56rem;letter-spacing:.3em;margin-top:6px}.nav{display:flex;align-items:center;gap:27px}.nav a{font-size:.83rem;font-weight:660;text-decoration:none;color:#e1d9e9}.nav a:hover{color:#d4abff}.btn{border-radius:11px;border:1px solid #a66de3;background:linear-gradient(135deg,#9451db,#7f3fc6);color:white!important;font-weight:760;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 19px;line-height:1.15;box-shadow:0 10px 28px #7431ca30;transition:transform .16s,background .16s;cursor:pointer}.btn:hover{transform:translateY(-1px);background:#9d59e4}.btn.secondary{background:#17121f;border-color:#5e4672;box-shadow:none}.btn.secondary:hover{border-color:#c69cff}.btn:disabled{opacity:.6;cursor:wait}.btn.compact{padding:12px 17px;font-size:.83rem}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-weight:830;color:var(--purple);font-size:.76rem;display:flex;align-items:center;gap:11px}.eyebrow:before{content:"";display:inline-block;width:24px;height:2px;background:var(--purple)}
-.hero-wrap{background:radial-gradient(ellipse 43% 75% at 92% 8%,#4a206445,transparent 80%);position:relative;overflow:hidden}.hero{display:grid;grid-template-columns:1.02fr .98fr;gap:55px;align-items:center;padding:68px 0 92px}.hero h1 span{display:block}.hero-copy>p{color:#c6bdcf;max-width:590px;font-size:1.1rem;line-height:1.78}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 23px}.hero-small{font-size:.83rem;color:#bdb1cd}.hero-small b{color:#d7afff}.hero-scene{position:relative;min-height:475px;border-radius:32px;isolation:isolate;overflow:hidden;border:1px solid #4e365c;background:radial-gradient(circle at 33% 21%,#693a9a55,transparent 42%),linear-gradient(145deg,#23172e,#100d19 65%,#291832);box-shadow:inset 0 0 85px #9252cd14,0 35px 70px #0008}.orb{position:absolute;border-radius:50%;pointer-events:none;box-shadow:inset -20px -21px 32px #210e38a9,0 0 65px #b777e43a;animation:drift 9s ease-in-out infinite}.orb.one{width:260px;height:260px;left:-90px;top:-90px;background:radial-gradient(circle at 28% 25%,#f2dfff,#bd7cf1 27%,#602e8b 67%,#2f173b)}.orb.two{width:180px;height:180px;right:-65px;bottom:25px;background:radial-gradient(circle at 25% 23%,#e6d2ff,#a46de1 32%,#4a255f 72%);animation-delay:-3s}.orb.three{width:54px;height:54px;right:35px;top:37px;background:radial-gradient(circle at 25% 22%,#eed7ff,#9a5fd9 38%,#382047 82%);animation-delay:-5s}.card-preview{position:relative;z-index:1;max-width:380px;margin:103px auto 0;padding:24px;background:#181320ef;border:1px solid #744e8a;border-radius:21px;box-shadow:0 25px 60px #0009;backdrop-filter:blur(15px)}.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#c2b2d7;font-size:.65rem;font-weight:820;letter-spacing:.12em}.tiny-chip{color:#e0c4ff;border-radius:30px;background:#422a56;padding:7px 9px;letter-spacing:0}.mini-house{width:68px;height:68px;display:grid;place-items:center;color:#dec1fd;font-size:2.5rem;background:#392447;border-radius:16px;margin:21px 0}.listing-chip{display:flex;justify-content:space-between;background:#251b2f;border:1px solid #4f385c;border-radius:10px;padding:12px;margin-top:8px;color:#fff;font-size:.79rem;font-weight:730}.listing-chip em{color:#dac0f4;font-size:.67rem;font-style:normal}.floating-note{position:absolute;z-index:2;bottom:27px;right:15px;background:#342242;color:#fff;font-size:.82rem;font-weight:750;max-width:230px;border:1px solid #7850a0;padding:16px 19px;border-radius:14px;box-shadow:0 12px 25px #0008}.floating-note small{display:block;color:#ddc1f6;font-weight:500;margin-top:2px}
-.section{padding:84px 0}.section.alt{background:#100d17;border-top:1px solid #271e31;border-bottom:1px solid #271e31}.section-heading{max-width:690px;margin-bottom:34px}.section-heading p{color:#c0b5cc;line-height:1.72}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.criteria-card{padding:25px 18px;border-radius:18px;background:linear-gradient(155deg,#21172b,#17131f);border:1px solid #4c385b;min-height:178px}.criteria-card strong{display:block;font-size:1.15rem}.criteria-card p{font-size:.82rem;color:#c2b6cf;margin-top:10px;margin-bottom:0}.round-number{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#3c2750;border:1px solid #8a62a5;color:#e1c8ff;font-weight:850;font-size:.74rem;margin-bottom:20px}.timing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.timing-box{border:1px solid #58416b;border-radius:22px;padding:33px;background:radial-gradient(circle at 85% 15%,#59307832,transparent 50%),#1d1527}.timing-box:nth-child(2){background:#18131f;border-color:#3f3249}.timing-box h3{font-size:1.8rem}.timing-box p{color:#c5b9d0}.pills{display:flex;flex-wrap:wrap;gap:8px;margin:19px 0}.pill{display:inline-block;border-radius:50px;border:1px solid #674a87;background:#31203e;color:#eedfff;font-weight:760;font-size:.77rem;padding:7px 12px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.step{padding:12px 14px 12px 0}.step b{color:var(--purple);font-size:.76rem;letter-spacing:.15em}.step h3{font-size:1.45rem;margin:14px 0}.step p{color:#c0b5cc;font-size:.93rem}
-.form-backdrop{background:radial-gradient(ellipse 50% 30% at 0% 4%,#44235f24,transparent 80%),#0c0a11}.form-header{max-width:760px}.form-header p{color:#c7bacf}.form-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:24px;align-items:start;margin-top:30px}.form-card{border:1px solid #4b3956;border-radius:22px;background:#17121f;padding:32px;box-shadow:0 20px 70px #0004}.form-section-title{font-size:.73rem;text-transform:uppercase;letter-spacing:.16em;color:var(--purple);font-weight:850;margin:4px 0 19px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field{margin-bottom:19px}.field label,.field-label{display:block;font-size:.85rem;font-weight:750;margin-bottom:8px}.field .hint{font-size:.76rem;color:#ad9abf;margin-top:6px}.control{width:100%;min-height:48px;background:#0e0b15;color:white;border:1px solid #65516e;border-radius:11px;padding:12px 14px;outline:none}.control::placeholder{color:#82758d}.control:focus{border-color:#d3a5ff;box-shadow:0 0 0 3px #9758d234}textarea.control{min-height:110px;resize:vertical}.divider{border:0;border-top:1px solid #3d3048;margin:11px 0 26px}.choice-row{display:flex;flex-wrap:wrap;gap:10px}.choice{cursor:pointer;display:inline-flex;align-items:center;gap:9px;border-radius:10px;border:1px solid #584366;padding:11px 13px;background:#221a2c;color:#f3e7ff;font-size:.84rem;font-weight:700}.choice:has(input:checked){border-color:#b881f3;background:#372345}.choice input,.check-line input{accent-color:#b77bf4}.readiness{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check-line{display:flex;gap:10px;align-items:start;font-size:.85rem;color:#dfd3e8;cursor:pointer}.readiness .check-line{padding:11px;background:#241b2d;border:1px solid #564465;border-radius:10px}.readiness .check-line:has(input:checked){border-color:#ac70e4;background:#30203c}.mls-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}.mls-row .control{min-width:0;flex:1}.icon-btn{min-height:46px;width:45px;border-radius:10px;background:#271b2d;color:#e7b9c3;border:1px solid #714b61;font-size:1.4rem}.icon-btn:disabled{opacity:.4;cursor:default}.add-btn{width:100%;background:#21162b;border:1px dashed #a071bd;border-radius:10px;color:#dbb5ff;padding:11px 14px;font-weight:750}.add-btn:hover{background:#2b1b3c}.form-notice{border-radius:11px;background:#332519;border:1px solid #735437;color:#f8d8b5;padding:14px 15px;font-size:.81rem;margin:15px 0}.form-notice.success{background:#192a22;border-color:#3e785b;color:#bff3d5}.form-notice.error{background:#361e2a;border-color:#86516a;color:#ffced8}.review-preview{font-size:.82rem;line-height:1.5;border-radius:10px;border:1px solid #705394;background:#2e213b;padding:14px 16px;color:#ead7ff;margin:15px 0}.review-preview .flags{margin:7px 0 0;padding-left:18px;color:#f0c38f}.form-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px}.form-bottom small{color:#aaa0b4;max-width:360px}.aside{padding:24px;background:#1c1625;border:1px solid #3f3249;border-radius:19px;position:sticky;top:20px}.aside h3{font-size:1.15rem}.aside p{color:#c2b6cd;font-size:.86rem}.aside ul{padding-left:19px;color:#cbbdda;font-size:.85rem}.aside li{margin:10px 0}.aside .tag{color:#d9b3fc;background:#322144;border-radius:99px;padding:6px 12px;font-size:.72rem;font-weight:800;display:inline-block;margin-bottom:16px}.partner-banner{border:1px solid #875bb4;border-radius:12px;background:#32223f;padding:17px;margin-bottom:25px;font-size:.86rem}.partner-banner strong{color:#f7e8ff}.partner-banner small{display:block;color:#c5add6;margin-top:4px}.partner-banner.warning{border-color:#9a684c;background:#33241d}.partner-banner.warning strong{color:#ffdda3}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:23px}.small-form .form-card{max-width:760px}.checkbox-approval{display:flex;align-items:start;gap:11px;color:#c8bfd2;font-size:.82rem;line-height:1.6}.checkbox-approval input{margin-top:4px;accent-color:#bb8df3}.footnote{color:#9e91aa;font-size:.77rem}.footer{border-top:1px solid #382a44;padding:44px 0 22px;background:#09080e}.footer-grid{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.footer p{color:#b0a6b9;font-size:.82rem;max-width:650px;margin-top:17px}.footer-links{display:flex;gap:18px;align-items:start;flex-wrap:wrap}.footer-links a{font-size:.84rem;color:#d8cbe6;text-decoration:none}.footer-lower{border-top:1px solid #281f30;margin-top:25px;padding-top:18px;font-size:.73rem;color:#92849f}.jump{scroll-margin-top:18px}#statusLine{padding-top:16px;font-size:.85rem}
-@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(15px)}}@media (max-width:1050px){.hero{gap:26px}.hero-scene{min-height:430px}.grid-4{grid-template-columns:repeat(2,1fr)}}@media(max-width:800px){.nav>a:not(.btn){display:none}.hero{grid-template-columns:1fr;padding:38px 0 66px}.hero-scene{min-height:365px}.card-preview{margin-top:57px}.form-layout{grid-template-columns:1fr}.aside{position:static}.steps{grid-template-columns:1fr;gap:5px}.step{border-bottom:1px solid #3a2c44}.timing-grid{grid-template-columns:1fr}}@media(max-width:530px){.shell{width:min(100% - 30px,1150px)}.notice-bar{font-size:.64rem;letter-spacing:.09em}.header{min-height:71px}.brand-symbol{width:37px;height:37px}.brand{font-size:.75rem}.nav .btn{padding:10px;font-size:.73rem}.hero{padding-top:25px;gap:18px}.hero h1{font-size:clamp(2.8rem,11vw,4.1rem)}.hero-copy>p{font-size:1rem}.hero-scene{min-height:333px}.card-preview{margin:41px 12px 0}.floating-note{bottom:8px;right:8px;font-size:.72rem;padding:11px 14px}.grid-4{gap:9px}.criteria-card{padding:18px 13px;min-height:165px}.criteria-card strong{font-size:1rem}.section{padding:57px 0}.form-card{padding:22px 16px}.form-grid,.mini-grid{grid-template-columns:1fr;gap:0}.form-bottom .btn{width:100%}.choice-row .choice{width:100%}.readiness{gap:7px}.readiness .check-line{font-size:.77rem}.footer-grid{display:block}.footer-links{margin-top:20px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0811">
+  <meta name="description" content="Add a sale or rental listing to the radar for a possible weekday open house. Simple requests, thoughtful route planning, and clearer MLS coordination.">
+  <title>Open House(s) | Mythic Housing</title>
+  <style>
+  :root { --bg:#0b0811; --card:#15101f; --card2:#1b1329; --line:rgba(207,181,255,.19); --text:#fdfaff; --muted:#c0b6cd; --faint:#9386a3; --purple:#b278ff; --purple2:#8b46ee; --purple3:#d9b8ff; --warning:#ffd28a; --ok:#b7eccc; --radius:22px; }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:100px}
+  body{margin:0;color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);min-width:320px}
+  body::before{content:"";position:fixed;z-index:-1;inset:0;background:radial-gradient(circle at 88% 8%,rgba(129,53,208,.15),transparent 34%),radial-gradient(circle at 2% 56%,rgba(94,39,167,.09),transparent 39%);pointer-events:none}
+  [hidden]{display:none!important}
+  a{color:var(--purple3);text-underline-offset:4px} a:hover{color:white} button,input,select,textarea{font:inherit} button{cursor:pointer}
+  :focus-visible{outline:3px solid #ddc0ff;outline-offset:3px}
+  .wrap{max-width:1160px;margin:auto;padding:0 24px}
+  .topbar{position:sticky;top:0;z-index:30;background:rgba(9,6,14,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}
+  .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;font-size:13px;letter-spacing:.16em;font-weight:900;white-space:nowrap}
+  .logo-mark{display:grid;place-items:center;width:39px;height:39px;border:1px solid #a361f6;border-radius:14px;background:linear-gradient(145deg,#45216b,#190f2b);font-size:22px;box-shadow:0 4px 20px #6f33ba35;letter-spacing:0}
+  .navlinks{display:flex;align-items:center;gap:26px}.navlinks a{color:#ded2ed;text-decoration:none;font-size:.88rem;font-weight:700}.navlinks a:hover{color:white}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-align:center;min-height:48px;padding:12px 20px;border-radius:999px;border:1px solid transparent;background:linear-gradient(135deg,#d1a6ff,#9754eb);color:#170924;text-decoration:none;font-weight:850;box-shadow:0 8px 30px #8a49dd38;transition:transform .2s,filter .2s}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.08);color:#170924}.btn.ghost{background:transparent;color:var(--text);border:1px solid #8865ac;box-shadow:none}.btn.small{min-height:39px;padding:7px 16px;font-size:.82rem}
+  .hero{position:relative;overflow:hidden;padding:100px 0 80px;border-bottom:1px solid var(--line)}
+  .bubble{position:absolute;border:1px solid rgba(205,148,255,.2);background:radial-gradient(circle at 30% 25%,rgba(245,227,255,.19),rgba(132,54,203,.035) 60%,transparent 80%);border-radius:50%;box-shadow:inset 0 0 20px #cf98ff12;animation:float 10s ease-in-out infinite;pointer-events:none}
+  .bubble.a{width:250px;height:250px;right:5%;top:-60px}.bubble.b{width:110px;height:110px;right:30%;bottom:10%;animation-delay:-4s}.bubble.c{width:55px;height:55px;left:4%;top:20%;animation-delay:-2s}.bubble.d{width:80px;height:80px;right:12%;bottom:4%;animation-delay:-6s}
+  @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-23px) translateX(9px)}}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(310px,.82fr);align-items:center;gap:65px;position:relative}
+  .eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.19em;color:#d3a7ff;font-weight:900;display:flex;align-items:center;gap:10px;margin:0 0 18px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:#c58af6}
+  h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.04em;line-height:1.14}
+  h1{font-size:clamp(2.8rem,6vw,5.4rem);margin:0 0 21px;font-weight:850}h1 span{color:#c58aff}
+  .lead{font-size:clamp(1.08rem,1.65vw,1.25rem);line-height:1.65;max-width:655px;color:#e6ddef;margin-bottom:25px}
+  .hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.meta{font-size:.87rem;color:var(--muted);margin:17px 0 0}
+  .glass{background:linear-gradient(155deg,rgba(85,42,129,.25),rgba(19,12,30,.84));border:1px solid #8e64b955;border-radius:28px;padding:30px;box-shadow:0 26px 90px #0008;position:relative}
+  .glass::before{content:"";position:absolute;inset:-1px;border-radius:28px;pointer-events:none;background:linear-gradient(145deg,#e2c1ff28,transparent 40%)}
+  .glass-title{font-size:.72rem;color:#d1b1f5;letter-spacing:.17em;text-transform:uppercase;font-weight:900;margin:0 0 17px}
+  .radar-line{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #ffffff19}.radar-line:last-of-type{border-bottom:0}
+  .round{width:37px;height:37px;flex:0 0 37px;border-radius:12px;display:grid;place-items:center;background:#9d5ced23;color:#d8b9ff;font-weight:850}
+  .radar-line strong{display:block;margin-bottom:1px;line-height:1.35}.radar-line small{color:#c2b4d4;display:block;line-height:1.45}
+  .ideal{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.chip{border:1px solid #b685ee4d;border-radius:999px;padding:5px 10px;background:#ad7de013;color:#e9d5fa;font-size:.75rem;font-weight:700}
+  .section{padding:85px 0}.section.alt{background:#100b18;border-block:1px solid var(--line)}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:30px;flex-wrap:wrap}
+  h2{font-size:clamp(2rem,4vw,3.35rem);max-width:800px;margin:0 0 14px}h2 em{font-style:normal;color:#c38dfd}
+  .sub{color:var(--muted);max-width:720px;font-size:1.03rem;margin:0}
+  .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+  .feature{border:1px solid var(--line);background:linear-gradient(180deg,#1a1226,#110d19);border-radius:var(--radius);padding:25px}
+  .feature .num{display:block;color:#c68fff;font-size:.75rem;letter-spacing:.15em;font-weight:900;margin-bottom:18px}
+  .feature h3{font-size:1.33rem;margin-bottom:11px}.feature p{color:#c7bbd1;font-size:.96rem;margin:0}
+  .progress-caption{display:flex;align-items:center;gap:14px;color:#d8b4ff;font-size:.79rem;text-transform:uppercase;letter-spacing:.14em;font-weight:900;margin:0 0 20px}
+  .progress-caption::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#8d54be,transparent)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .step{background:#1a1226;border:1px solid var(--line);border-radius:18px;padding:24px;position:relative}
+  .step .circle{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#a35ef1;color:#1c0a28;font-weight:900;margin-bottom:20px}
+  .step h3{font-size:1.15rem;margin-bottom:9px}.step p{color:#c7bcd1;font-size:.91rem;margin:0}
+  .step.wide{background:linear-gradient(135deg,#251538,#15101f);border-color:#9d65cf77}
+  .small-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .time-card{padding:30px;background:#1b1328;border:1px solid var(--line);border-radius:22px}.time-card .icon{font-size:1.7rem;margin-bottom:12px}
+  .time-card h3{font-size:1.4rem;margin-bottom:6px}.big-time{font-size:clamp(1.9rem,3vw,2.8rem);font-weight:900;letter-spacing:-.05em;color:#d4a9ff;line-height:1.15;margin-bottom:12px}
+  .time-card p{color:var(--muted);margin:0}.time-note{margin-top:17px;color:#e8dbef;font-size:.91rem}
+  .rule{margin-top:19px;border:1px solid #aa80ce6b;background:linear-gradient(125deg,#271639,#171021);border-radius:22px;padding:25px 28px;display:flex;gap:20px;align-items:flex-start}
+  .rule .clock{flex:0 0 54px;width:54px;height:54px;display:grid;place-items:center;background:#aa6fe832;border:1px solid #aa79e57a;border-radius:18px;font-size:26px}
+  .rule h3{font-size:1.19rem;margin-bottom:7px}.rule p{margin:0;color:#dfd0e9}
+  .tipline{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.tip{padding:8px 12px;border:1px solid #ffffff20;border-radius:999px;font-size:.79rem;color:#d6cadf}
+  .note-card{background:#1a1125;border:1px solid var(--line);border-radius:24px;padding:29px;display:flex;gap:24px;align-items:flex-start}
+  .note-card .emoji{display:grid;place-items:center;background:#8d4bd226;border-radius:18px;width:58px;height:58px;flex:0 0 58px;font-size:26px}
+  .note-card p{color:var(--muted);margin:0}.note-card h3{font-size:1.3rem;margin-bottom:9px}
+  .pets{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .pet{min-height:220px;border:1px solid var(--line);border-radius:23px;background:radial-gradient(circle at 72% 16%,#6b3b9933,transparent 45%),#1a1224;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;position:relative;overflow:hidden}
+  .pet .paws{position:absolute;font-size:60px;opacity:.08;transform:rotate(-25deg);left:7%;bottom:4%}.pet svg{width:98px;height:98px;filter:drop-shadow(0 9px 18px #0007)}
+
+  .pet-photo-card{padding:0;align-items:stretch;justify-content:flex-start}
+  .pet-photo-card .dog-photo{display:block;width:100%;height:252px;object-fit:cover;object-position:center 45%}
+  .pet-photo-card .pet-copy{padding:18px 22px 24px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .pet-photo-card .pet-copy strong{margin-top:0}
+  .pet strong{margin-top:13px}.pet small{color:#c2b2ce;max-width:300px}.pet-note{color:var(--muted);font-size:.88rem;margin-top:13px}
+  .form-shell{background:linear-gradient(160deg,#221431,#130e1c);border:1px solid #ac74df55;border-radius:27px;padding:34px;box-shadow:0 25px 70px #0005}
+  .form-section-title{font-size:1.05rem;color:#d7b0fc;font-weight:900;border-bottom:1px solid var(--line);padding-bottom:12px;margin:29px 0 19px}
+  .form-section-title:first-child{margin-top:0}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.field.full{grid-column:1 / -1}
+  label.field{display:flex;flex-direction:column;gap:7px;font-size:.9rem;font-weight:750;color:#f7f0fa}
+  label.field .hint{font-weight:400;color:#b7aac8;font-size:.78rem;line-height:1.5;margin-top:1px}
+  .req{color:#ddacff}.input{width:100%;border:1px solid #8a729f66;border-radius:12px;background:#100b18;color:#fff;padding:13px 14px;min-height:48px;font-weight:450;outline:none;transition:border-color .18s,box-shadow .18s}
+  .input:focus{border-color:#c487f7;box-shadow:0 0 0 3px #8d4bcf33}.input::placeholder{color:#9688a5}textarea.input{min-height:105px;resize:vertical}select.input{color:#f9f4ff}
+  .choices{display:flex;gap:9px;flex-wrap:wrap}.choice{position:relative;cursor:pointer}.choice input{position:absolute;opacity:0;width:1px;height:1px}.choice span{display:inline-flex;min-height:43px;align-items:center;border:1px solid #816e9866;background:#140e1d;border-radius:12px;padding:9px 14px;color:#e8deef;font-weight:700;font-size:.88rem;transition:.2s}
+  .choice input:checked + span{background:#8a4dcd44;border-color:#c58aff;color:#fff;box-shadow:inset 0 0 0 1px #c58aff44}.choice input:focus-visible + span{outline:3px solid #d9b8ff;outline-offset:3px}
+  .checkrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .check{display:flex;gap:10px;align-items:flex-start;border:1px solid #74638955;padding:11px 13px;border-radius:12px;background:#130e1b;font-size:.87rem;color:#e5dceb}.check input{accent-color:#bb86f2;transform:scale(1.2);margin:4px 3px 0 1px}
+  .light{color:var(--muted);font-size:.88rem}.hint-inline{font-size:.84rem;color:#cbb8d8;margin:8px 0 0}
+  details{border:1px solid #876b9f5c;border-radius:15px;padding:16px 18px;background:#130e1b;margin-top:15px}details summary{cursor:pointer;font-weight:850;color:#e8cbff;list-style:none}details summary::-webkit-details-marker{display:none}details summary::after{content:"+";float:right;color:#bf8af3;font-size:1.2rem}details[open] summary::after{content:"−"}details .inner{padding-top:19px}
+  .safety{font-size:.8rem;color:#ddc8ec;background:#ffffff08;padding:13px;border-left:3px solid #b475fa;border-radius:8px;margin-top:12px}
+  .form-actions{border-top:1px solid var(--line);margin-top:30px;padding-top:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}.form-actions .btn{border:0}.form-actions p{font-size:.82rem;color:#b8adc5;max-width:500px;margin:0}
+  .message{display:none;border-radius:14px;padding:16px 18px;margin-top:20px}.message.show{display:block}.message.ok{border:1px solid #79bc9677;background:#27604030;color:#d9fbe5}.message.err{border:1px solid #e9a6a68a;background:#50242450;color:#ffe1e1}
+  .footer{border-top:1px solid var(--line);padding:33px 0 44px;color:#c0b2ce;font-size:.85rem}.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer a{color:#d9b5f9}
+  .contact-list{display:flex;gap:15px;flex-wrap:wrap}.contact-list a{text-decoration:none;color:#e8d5f8}
+  .hide{position:absolute!important;height:1px!important;width:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
+  @media(max-width:850px){.navlinks a:not(.btn){display:none}.hero{padding:77px 0 65px}.hero-grid{grid-template-columns:1fr;gap:35px}.hero h1{max-width:730px}.three,.steps{grid-template-columns:1fr 1fr}.section{padding:65px 0}}
+  @media(max-width:580px){.wrap{padding:0 17px}.nav{min-height:65px}.logo{font-size:.68rem;letter-spacing:.09em}.logo-mark{width:34px;height:34px;border-radius:11px}.btn.small{padding:8px 12px;font-size:.73rem;min-height:37px}.hero{padding:62px 0 50px}.hero-grid{gap:26px}.glass,.form-shell{padding:22px}.hero-actions .btn{width:100%}.section{padding:52px 0}.three,.steps,.small-grid,.fields,.checkrow,.pets{grid-template-columns:1fr}.note-card,.rule{flex-direction:column}.field.full{grid-column:auto}.form-actions .btn{width:100%}.time-card{padding:24px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition:none!important}}
+  
+   .extras-intro{max-width:720px;margin:0 0 26px;color:#c0b6cd}
+   .additional-panel{background:linear-gradient(160deg,#221431,#130e1c);border:1px solid #ac74df55;border-radius:27px;padding:30px;max-width:820px}
+   .additional-panel .field{margin-bottom:15px}.additional-panel .field.full{grid-column:1/-1}
+   .additional-panel .control-row{display:flex;flex-wrap:wrap;gap:17px;align-items:center;justify-content:space-between;margin-top:20px}
+   .additional-panel .control-row .btn{border:0}.additional-panel .control-row p{margin:0;color:#c0b6cd;font-size:.82rem;max-width:420px}
+   .additional-panel .form-note{margin-top:16px;border:1px solid #7c5a9e;padding:13px;border-radius:11px;background:#2a193b;display:none}
+   .additional-panel .form-note.show{display:block}
+   .additional-panel .consent-line{display:flex;gap:12px;align-items:flex-start;color:#e5dceb;font-size:.88rem;margin-top:8px}
+   .additional-panel .consent-line input{accent-color:#bb86f2;margin-top:5px}
+   .additional-panel .screenreader{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(0,0,0,0)}
+   @media(max-width:580px){.additional-panel{padding:22px}.additional-panel .control-row .btn{width:100%}}
 </style>
 </head>
 <body>
-<div class="notice-bar">WEEKDAY OPEN HOUSES COME FIRST <span aria-hidden="true">&nbsp;•&nbsp;</span> DELAWARE PROPERTIES WELCOME</div>
-<div class="hero-wrap"><header class="header shell"><a class="brand" href="#home" aria-label="Mythic Housing home"><span class="brand-symbol">M</span><span class="brand-line">MYTHIC<small>HOUSING</small></span></a><nav class="nav" aria-label="Main navigation"><a href="#ideal-fit">Ideal properties</a><a href="#how">How it works</a><a href="#partner">Partner with us</a><a class="btn compact" href="#request">Propose an open house →</a></nav></header>
-<section id="home" class="hero shell"><div class="hero-copy"><div class="eyebrow">Open house hosting, simplified</div><h1>More doors open.<span class="accent">More possibilities.</span></h1><p>Have a property that could host an <b style="color:white">open house</b>? We prioritize <b style="color:#dabbff">weekday open houses</b> at vacant, cleaned, maintained, show-ready listings. Submit one or several MLS numbers, even if we're not yet connected.</p><div class="hero-actions"><a class="btn" href="#request">Propose an open house <span aria-hidden="true">→</span></a><a class="btn secondary" href="#how">How it works</a></div><div class="hero-small">✦ <b>No approval gate.</b> New agents can submit immediately. Dates are confirmed after review.</div></div>
-<div class="hero-scene" aria-label="Decorative example of open house listings"><span class="orb one" aria-hidden="true"></span><span class="orb two" aria-hidden="true"></span><span class="orb three" aria-hidden="true"></span><div class="card-preview"><div class="card-top"><span>OPEN HOUSE OPPORTUNITIES</span><span class="tiny-chip">WEEKDAY FOCUS</span></div><div class="mini-house" aria-hidden="true">⌂</div><div class="listing-chip"><span>DENC2109456</span><em>NEW CASTLE</em></div><div class="listing-chip"><span>DESU2118712</span><em>SUSSEX</em></div><div class="listing-chip"><span>DEKT2050368</span><em>KENT</em></div></div><div class="floating-note">Your next open house could start here.<small>Delaware listings + other MLS areas considered</small></div></div></section></div>
-<main>
-<section class="section alt jump" id="ideal-fit"><div class="shell"><div class="section-heading"><div class="eyebrow">The ideal open house fit</div><h2>Ready to welcome <span class="accent">potential buyers.</span></h2><p>These are preferred conditions, not absolute requirements. If your property is a little different, feel free to submit it for consideration.</p></div><div class="grid-4"><article class="criteria-card"><span class="round-number">01</span><strong>Vacant</strong><p>Simple access and fewer scheduling complications.</p></article><article class="criteria-card"><span class="round-number">02</span><strong>Cleaned</strong><p>Presentable, comfortable spaces for visitors.</p></article><article class="criteria-card"><span class="round-number">03</span><strong>Maintained</strong><p>In good condition for prospective visitors.</p></article><article class="criteria-card"><span class="round-number">04</span><strong>Ready to show</strong><p>Prepared for hosting without major work.</p></article></div></div></section>
-<section class="section" id="timing"><div class="shell"><div class="timing-grid"><div class="timing-box"><div class="eyebrow">Our main focus</div><h2>Weekday open houses <span class="accent">come first.</span></h2><p>The priority is scheduling great weekday open house opportunities for properties that are ready for visitors.</p><a class="btn" href="#request">Suggest a weekday open house →</a></div><div class="timing-box"><div class="eyebrow">Case by case</div><h3>Evenings and weekends</h3><p>Some timely listings may fit the evening or weekend schedule, depending on availability and the specific property.</p><div class="pills"><span class="pill">Coming soon</span><span class="pill">Recently active</span><span class="pill">Price reductions</span><span class="pill">Other opportunities</span></div><p class="footnote">Evening and weekend hosting is never guaranteed. Send it for review.</p></div></div></div></section>
-<section class="section alt jump" id="how"><div class="shell"><div class="section-heading"><div class="eyebrow">Easy from start to finish</div><h2>How to propose an open house</h2><p>One straightforward intake, whether you're part of a partner office or reaching out for the first time.</p></div><div class="steps"><div class="step"><b>STEP 01</b><h3>Share contact details</h3><p>First-time visitors tell us how to reach them. Assigned partner links can simplify repeat requests when connected to the private partner list.</p></div><div class="step"><b>STEP 02</b><h3>Submit MLS numbers</h3><p>Add up to 25 MLS numbers and share the listing stage, property readiness and timing preference.</p></div><div class="step"><b>STEP 03</b><h3>Coordinate your open house</h3><p>Requests go through immediately. Details are reviewed and any proposed hosting window is confirmed separately.</p></div></div></div></section>
-<section class="section form-backdrop jump" id="request"><div class="shell"><div class="form-header"><div class="eyebrow">Open house request portal</div><h2>Have a listing in mind?</h2><p>Submit your listing for an <b>open house</b> opportunity. Delaware Bright MLS and other MLS areas are welcome. Unusual formats are marked for follow-up, not automatically rejected.</p></div>
-<div class="form-layout"><form name="open-house-requests" id="requestForm" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" class="form-card" novalidate><input type="hidden" name="form-name" value="open-house-requests"><input type="hidden" name="mls_numbers" id="mlsPayload"><input type="hidden" name="review_status" id="reviewStatus"><input type="hidden" name="review_flags" id="reviewFlags"><input type="hidden" name="partner_token" id="partnerToken"><input type="hidden" name="selected_office_agents" id="officeAgents"><input type="hidden" name="submission_source" id="submissionSource" value="Public website"><div class="screenreader"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-<div id="partnerBanner" class="partner-banner" hidden><strong id="partnerTitle">Partner link</strong><small id="partnerText"></small></div>
-<div class="form-section-title">01 &nbsp; Your information</div><div id="contactBlock"><div class="form-grid"><div class="field"><label for="contactName">Your name *</label><input class="control" id="contactName" name="contact_name" required maxlength="90" autocomplete="name" placeholder="Full name"></div><div class="field"><label for="brokerage">Brokerage / office *</label><input class="control" id="brokerage" name="brokerage" required maxlength="110" placeholder="Company or brokerage"></div><div class="field"><label for="email">Email address *</label><input class="control" id="email" name="email" type="email" required maxlength="150" autocomplete="email" placeholder="you@brokerage.com"></div><div class="field"><label for="phone">Phone (optional)</label><input class="control" id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel" placeholder="(555) 555-5555"></div></div></div>
-<div id="officeTeam" class="field" hidden><span class="field-label">Office agent(s) associated with this request</span><div id="officeMemberOptions" class="readiness"></div></div>
-<hr class="divider"><div class="form-section-title">02 &nbsp; Property information</div><div class="field"><span class="field-label">MLS area *</span><div class="choice-row"><label class="choice"><input type="radio" name="mls_area" value="DE" checked> Delaware • Bright MLS</label><label class="choice"><input type="radio" name="mls_area" value="OTHER"> Other MLS area</label></div></div>
-<div class="field" id="otherRegionWrap" hidden><label for="otherRegion">Other MLS region or system *</label><input class="control" id="otherRegion" name="other_mls_region" maxlength="85" placeholder="MLS name or state"><p class="hint">We'll flag these for manual regional review.</p></div>
-<div class="field"><label for="mls-1">MLS numbers * <span id="mlsCount" class="muted" style="float:right;font-size:.77rem">1 / 25</span></label><div id="mlsRows"></div><button class="add-btn" id="addMls" type="button">+ Add another MLS number</button><p class="hint">Examples: DENC2109456, DEKT2050368, DESU2118712. Older formats can still be submitted.</p></div>
-<hr class="divider"><div class="form-section-title">03 &nbsp; Open house details</div><div class="field"><span class="field-label">Preferred timing *</span><div class="choice-row"><label class="choice"><input type="radio" name="preferred_timing" value="Weekday (priority)" checked> Weekday (priority)</label><label class="choice"><input type="radio" name="preferred_timing" value="Evening/weekend (case by case)"> Evening / weekend</label><label class="choice"><input type="radio" name="preferred_timing" value="Flexible"> Flexible</label></div><p class="hint">This is a preference, not a confirmed open house appointment.</p></div><div class="field"><label for="listingStage">Listing situation</label><select class="control" id="listingStage" name="listing_stage"><option>Active listing</option><option>Coming soon</option><option>Recently active / just listed</option><option>Price reduction</option><option>Other</option></select></div><div class="field"><span class="field-label">Showing readiness (check all that apply)</span><div class="readiness"><label class="check-line"><input type="checkbox" name="readiness_vacant" value="Yes"> Vacant</label><label class="check-line"><input type="checkbox" name="readiness_cleaned" value="Yes"> Cleaned</label><label class="check-line"><input type="checkbox" name="readiness_maintained" value="Yes"> Maintained</label><label class="check-line"><input type="checkbox" name="readiness_ready_to_show" value="Yes"> Ready to show</label></div><p class="hint">Not all boxes checked? That's okay. Your request can still be submitted.</p></div>
-<hr class="divider"><div class="form-section-title">04 &nbsp; Final details</div><div class="field"><label for="notes">Helpful details (optional)</label><textarea class="control" id="notes" name="notes" maxlength="900" placeholder="Preferred dates, access considerations, availability or anything else we should know."></textarea></div><label class="checkbox-approval"><input type="checkbox" name="email_updates_opt_in" value="Yes"><span>I'd like occasional Mythic Housing open house updates by email. Optional; leave unchecked if you do not want updates.</span></label>
-<div id="reviewPreview" class="review-preview" role="status" aria-live="polite">Your request will be recorded for review. Unknown listing formats and public submissions are marked for follow-up without blocking the request.</div><div id="formMessage" class="form-notice" role="alert" hidden></div><div class="form-bottom"><small>We use submitted information to review and respond to open house inquiries. Submission does not confirm scheduling. Do not include lockbox codes or other sensitive access details.</small><button class="btn" type="submit" id="requestSubmit">Submit open house request →</button></div></form>
-<aside class="aside"><span class="tag">WEEKDAY PRIORITY</span><h3>A good open house starts with a ready property.</h3><p>Ideal listings are:</p><ul><li>Vacant and available to show</li><li>Clean, maintained and welcoming</li><li>Ready to schedule without major prep</li></ul><p>Coming soon, recently active and price-reduced properties may fit evening or weekend opportunities on a case-by-case basis.</p><hr class="divider"><p class="footnote">MLS format screening is informational only. It does not verify a property's status, address or the submitter's authority. Private assigned links indicate a source, not legal authorization.</p></aside></div></div></section>
-<section class="section alt small-form jump" id="partner"><div class="shell"><div class="section-heading"><div class="eyebrow">Open house partners</div><h2>Interested in working together?</h2><p>You don't have to wait for a personalized link. Submit an open house request above now, or introduce yourself to discuss future hosting opportunities.</p></div><form name="partner-interest" id="partnerForm" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" class="form-card"><input type="hidden" name="form-name" value="partner-interest"><div class="screenreader"><label>Leave this blank <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div><div class="form-grid"><div class="field"><label for="pName">Your name *</label><input class="control" id="pName" name="name" required maxlength="90"></div><div class="field"><label for="pBroker">Brokerage / office *</label><input class="control" id="pBroker" name="brokerage" required maxlength="110"></div><div class="field"><label for="pEmail">Email *</label><input class="control" id="pEmail" type="email" name="email" required maxlength="150"></div><div class="field"><label for="pPhone">Phone (optional)</label><input class="control" id="pPhone" name="phone" type="tel" maxlength="40"></div></div><div class="field"><label for="pNotes">A little about your needs (optional)</label><textarea class="control" id="pNotes" name="notes" maxlength="500"></textarea></div><label class="checkbox-approval"><input type="checkbox" name="marketing_opt_in" value="Yes"> I would also like occasional email updates (optional).</label><div class="form-bottom"><small>Partner inquiries are independent from listing requests.</small><button class="btn" type="submit">Register my interest →</button></div><div class="form-notice" id="partnerMessage" role="alert" hidden></div></form></div></section>
-<section class="section small-form jump" id="updates"><div class="shell"><div class="section-heading"><div class="eyebrow">Open house updates</div><h2>Stay in the loop.</h2><p>Occasional news about weekday open houses and opportunities, only when you ask for it.</p></div><form name="open-house-updates" id="updatesForm" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" class="form-card"><input type="hidden" name="form-name" value="open-house-updates"><div class="screenreader"><label>Leave this blank <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div><div class="mini-grid"><div class="field"><label for="uName">Name (optional)</label><input class="control" id="uName" name="name" maxlength="90"></div><div class="field"><label for="uEmail">Email *</label><input class="control" id="uEmail" name="email" type="email" required maxlength="150"></div></div><label class="checkbox-approval"><input type="checkbox" name="marketing_opt_in" value="Yes" required> I agree to receive optional open house updates and understand I can opt out later. *</label><div class="form-bottom"><small>No updates are sent automatically by this website. You can leave this page without opting in.</small><button class="btn" type="submit">Sign me up →</button></div><div class="form-notice" id="updatesMessage" role="alert" hidden></div></form></div></section>
-</main><footer class="footer"><div class="shell"><div class="footer-grid"><div><a class="brand" href="#home"><span class="brand-symbol">M</span><span class="brand-line">MYTHIC<small>HOUSING</small></span></a><p>Weekday open house hosting is our focus. All inquiries are reviewed individually, with evening and weekend requests considered case by case.</p></div><div class="footer-links"><a href="#request">Open house requests</a><a href="#partner">Partnerships</a><a href="#updates">Updates</a></div></div><div class="footer-lower">© <span id="year"></span> Mythic Housing · Not affiliated with Bright MLS. Submission is not a commitment to host an open house.</div></div></footer>
+<header class="topbar"><div class="wrap nav">
+  <a class="logo" href="#top" aria-label="Mythic Housing home"><span class="logo-mark" aria-hidden="true">⌂</span> MYTHIC HOUSING</a>
+  <nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav>
+</div></header>
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="bubble a"></div><div class="bubble b"></div><div class="bubble c"></div><div class="bubble d"></div>
+  <div class="wrap hero-grid">
+    <div><p class="eyebrow">Open House(s) · Weekdays first</p>
+      <h1 id="hero-title">More eyes on the property.<br><span>Less calendar chaos.</span></h1>
+      <p class="lead">Have a property that could host an open house? Add it to my radar as a <strong>possibility</strong>. I'm building practical, geographically grouped open-house routes to help listings get in front of more buyers <strong>or renters</strong>.</p>
+      <div class="hero-actions"><a class="btn" href="#request">Add a listing to my radar <span aria-hidden="true">↗</span></a><a class="btn ghost" href="#process">See the process</a></div>
+      <p class="meta">A request is not a confirmed appointment. No need to choose dates or times here. You can explore the site without signing up.</p>
+    </div>
+    <aside class="glass" aria-label="Good candidate checklist">
+      <p class="glass-title">The ideal open-house candidate</p>
+      <div class="radar-line"><span class="round">01</span><div><strong>Vacant, if possible</strong><small>Fewer moving parts. Everyone appreciates fewer moving parts.</small></div></div>
+      <div class="radar-line"><span class="round">02</span><div><strong>Cleaned &amp; maintained</strong><small>Ready for visitors, not a surprise obstacle course.</small></div></div>
+      <div class="radar-line"><span class="round">03</span><div><strong>Ready to show</strong><small>Clear access instructions and safe conditions.</small></div></div>
+      <div class="ideal"><span class="chip">Newly active</span><span class="chip">Price reductions</span><span class="chip">Coming soon, for future review</span><span class="chip">Investor / as-is welcome for review</span></div>
+    </aside>
+  </div>
+</section>
+<section class="section" id="process"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">The goal is to get qualified open-house possibilities on the calendar with enough lead time to be seen. Here is how a request becomes an actual event.</p></div></div>
+  <div class="progress-caption">First, we get it on the radar</div>
+  <div class="steps">
+    <article class="step"><span class="circle">1</span><h3>You submit a possibility</h3><p>Send the MLS number(s) and your name, email, and phone. A little context helps; perfection is not required.</p></article>
+    <article class="step"><span class="circle">2</span><h3>I build the route</h3><p>I check the listings, group nearby locations, and account for travel time so the day makes geographic sense (and saves gas).</p></article>
+    <article class="step"><span class="circle">3</span><h3>I request an appointment</h3><p>When a listing fits, I aim to send the scheduling request <strong>72 hours or more in advance</strong> so there's time to get the word out.</p></article>
+  </div>
+  <div style="height:23px"></div>
+  <div class="progress-caption">Then, a little teamwork</div>
+  <div class="steps">
+    <article class="step"><span class="circle">4</span><h3>You approve, decline, or cancel</h3><p><strong>If</strong> the property is still available and the time works, approve. If it's already gone, decline. If it becomes unavailable later, please cancel.</p></article>
+    <article class="step wide"><span class="circle">5</span><h3>Match the MLS open house</h3><p>As soon as the appointment works, please register the <strong>same date and time</strong> as an open house in the MLS. Earlier registration means more time for people to notice it. A social post, flyer, or email to interested contacts is a welcome extra.</p></article>
+    <article class="step"><span class="circle">6</span><h3>Final check. Then go time.</h3><p>I check the following day's route. If the matching open house isn't registered in the MLS by the cutoff below, that stop comes off the next-day route. An appointment by itself is not an advertised event.</p></article>
+  </div>
+  <div class="note-card" style="margin-top:18px"><div class="emoji" aria-hidden="true">✦</div><div><h3>Optional, but highly recommended: give it some extra attention.</h3><p>Post a flyer or social media announcement and, where permitted, email the people who have inquired about, clicked, saved, or expressed interest in the property. Pair that outreach with an MLS-registered open house as soon as the time is approved. More lead time gives the event a better chance of being noticed.</p></div></div>
+</div></section>
+<section class="section alt" id="dates"><div class="wrap">
+  <p class="eyebrow">Dates &amp; times</p><h2>Short windows. <em>Smart routes.</em></h2>
+  <p class="sub" style="margin-bottom:25px">Weekday open houses are the focus. Evenings and weekends may be considered occasionally for the right property and route, but they aren't selectable request preferences.</p>
+  <div class="small-grid">
+    <div class="time-card"><div class="icon" aria-hidden="true">⌂</div><h3>Rental properties</h3><div class="big-time">15–30 minutes</div><p>A focused open-house window at one location. Time is requested through the usual scheduling system after I review the route.</p></div>
+    <div class="time-card"><div class="icon" aria-hidden="true">◇</div><h3>Sale properties</h3><div class="big-time">15–30 minutes</div><p>Same practical baseline. I'll ask for a longer window when the itinerary and property allow it.</p></div>
+  </div>
+  <div class="rule"><div class="clock" aria-hidden="true">◷</div><div><h3>MLS registration checkpoint: 6:00 p.m. the evening before</h3><p>To keep things consistent, I check that the open house is actually registered in the MLS by <strong>6:00 p.m. the day before</strong> the requested appointment. If it isn't, I remove that stop from the next-day route rather than holding a slot for an unadvertised event. I do not send individual reminder messages. Please register it as soon as you approve, rather than waiting for the checkpoint. The appointment alone does not advertise an open house.</p></div></div>
+  <div class="tipline"><span class="tip">72+ hours ahead when possible</span><span class="tip">Geographic grouping</span><span class="tip">No preferred-time field</span><span class="tip">Same registration checkpoint for every listing</span></div>
+  <p class="time-note">Coming Soon properties can be submitted for future review, but any open house must comply with the listing's current MLS status and showing rules.</p>
+</div></section>
+<section class="section" id="notes"><div class="wrap">
+  <p class="eyebrow">A few things worth mentioning</p><h2>Helpful heads-ups. <em>No obstacle course.</em></h2>
+  <div class="three">
+    <article class="feature"><span class="num">01 / CONDITION</span><h3>Investor / as-is properties</h3><p>Absolutely put them on the radar. Just flag rough conditions, safety concerns, waiver requirements, or access limitations so we can assess what is appropriate before anyone heads over.</p></article>
+    <article class="feature"><span class="num">02 / ACCESS</span><h3>The lockbox has a personality?</h3><p>Sticks? Needs a left–right jiggle rather than an up–down one? There's an optional, tucked-away spot in the form for the oddities. Keep codes and alarm credentials in the approved showing system.</p></article>
+    <article class="feature"><span class="num">03 / CAT LOGISTICS</span><h3>Previous feline residents count</h3><p>I am allergic to cats, but that won't stop me from showing a property. Knowing ahead lets me stack those stops together or near the end of the day, before my nose starts rewriting my pronunciation.</p></article>
+  </div>
+  <div style="height:16px"></div>
+  <div class="note-card"><div class="emoji" aria-hidden="true">✉</div><div><h3>Know someone who isn't quite ready to buy or rent?</h3><p>Those inquiries matter, too. If someone wants support improving credit or becoming better prepared, I'm happy to help connect them with people and resources that may be useful. Please ask their permission before sharing contact information. No promises, pressure, or judgments — just a possible next step. <a href="mailto:Schmid@danlogan.com?subject=Resource%20connection%20inquiry">Start a conversation</a>.</p></div></div>
+</div></section>
+<section class="section alt" aria-labelledby="dog-title"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">The unofficial office morale team</p><h2 id="dog-title">A cameo from <em>the doggos.</em></h2><p class="sub">Because even scheduling logistics could use a little personality.</p></div></div>
+  <div class="pets">
+    <div class="pet pet-photo-card"><img class="dog-photo" src="assets/mythic-dog-01.jpg" width="600" height="481" loading="lazy" alt="Happy black dog wearing a teal harness, smiling outside among fallen leaves."><div class="pet-copy"><strong>Professional greeter</strong><small>Here to improve morale, one tail wag at a time.</small></div></div>
+    <div class="pet"><span class="paws" aria-hidden="true">🐾</span><svg viewBox="0 0 100 100" role="img" aria-label="Illustrated dog with floppy ears"><path d="M33 22 Q12 5 9 31 Q9 58 27 57 L27 70 Q34 89 50 90 Q66 89 73 70 L73 57 Q91 58 91 31 Q88 5 67 22 Q50 11 33 22" fill="#7f5aa8" stroke="#d2acef" stroke-width="3"/><ellipse cx="50" cy="61" rx="25" ry="21" fill="#d0addf"/><circle cx="37" cy="46" r="4" fill="#271334"/><circle cx="63" cy="46" r="4" fill="#271334"/><ellipse cx="50" cy="59" rx="8" ry="6" fill="#271334"/><path d="M50 65 V70 M50 70 Q42 76 39 69 M50 70 Q58 76 61 69" stroke="#271334" stroke-width="3" fill="none" stroke-linecap="round"/></svg><strong>Chief route supervisor</strong><small>Another photo spot, ready when the real face behind the title arrives.</small></div>
+  </div>
+  <p class="pet-note">One of the real doggos has made an appearance. The second illustrated spot is waiting for its photo debut.</p>
+</div></section>
+<section class="section" id="request"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone and MLS number(s) are the essentials. Anything else is a helpful heads-up, not an audition. Properties are reviewed for fit; submitting does not reserve a date or time.</p></div></div>
+  <div class="form-shell">
+  <form name="open-house-requests" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" id="listing-form">
+    <input type="hidden" name="form-name" value="open-house-requests">
+    <input type="hidden" name="review_status" id="review-status" value="REVIEW HIGHLIGHT">
+    <input type="hidden" name="review_flags" id="review-flags" value="Public website: verify submitter">
+    <input type="hidden" name="partner_token" id="partner-token" value="">
+    <input type="hidden" name="submission_source" id="submission-source" value="website">
+    <p class="hide"><label>Leave this empty: <input name="website" tabindex="-1" autocomplete="off"></label></p>
+    <h3 class="form-section-title">01 — The essentials</h3>
+    <div class="fields">
+      <label class="field">Your name <span class="req">*</span><input class="input" name="contact_name" required autocomplete="name" maxlength="100" placeholder="First and last name"></label>
+      <label class="field">Email <span class="req">*</span><input class="input" name="email" type="email" required autocomplete="email" maxlength="180" placeholder="you@example.com"></label>
+      <label class="field">Phone number <span class="req">*</span><input class="input" name="phone" type="tel" required autocomplete="tel" maxlength="35" placeholder="Best number to reach you"></label>
+      <label class="field">MLS area <span class="req">*</span><select name="mls_area" class="input" id="mls-area" required><option value="">Select a region</option><option value="Bright MLS">Bright MLS</option><option value="Other MLS">Another MLS / region</option><option value="Not sure">Not sure</option></select></label>
+      <label class="field full" id="other-region-wrap" hidden>Other MLS / region<input class="input" name="other_mls_region" id="other-region" placeholder="Which MLS or area? (if known)" maxlength="100"></label>
+      <label class="field full">MLS number(s) <span class="req">*</span><textarea class="input" name="mls_numbers" id="mls-numbers" required maxlength="1300" placeholder="One per line, or separated by commas. Add up to 25 listings."></textarea><span class="hint" id="mls-counter">One required; up to 25. Please use MLS IDs, not lockbox codes.</span></label>
+    </div>
+    <h3 class="form-section-title">02 — Quick context</h3>
+    <div class="fields">
+      <label class="field">Property type<select class="input" name="property_type"><option value="Not specified">Choose if helpful</option><option value="Sale">For sale</option><option value="Rental">For rent</option><option value="Mixed">Both / multiple property types</option></select></label>
+      <label class="field">Listing stage<select class="input" name="listing_stage"><option value="Not specified">Choose if helpful</option><option value="Active">Active</option><option value="Recently active">Recently active</option><option value="Price reduction">Price reduction</option><option value="Coming soon">Coming soon — future review</option><option value="Other">Other / not sure</option></select></label>
+      <div class="field full"><div style="font-size:.9rem;font-weight:750;margin-bottom:9px">How would you describe the property?</div><div class="choices" role="group" aria-label="Property condition">
+        <label class="choice"><input type="radio" name="property_condition" value="Standard / show-ready" checked><span>Show-ready</span></label>
+        <label class="choice"><input type="radio" name="property_condition" value="Investor / as-is / fixer"><span>Investor / as-is / fixer</span></label>
+        <label class="choice"><input type="radio" name="property_condition" value="Not sure"><span>Not sure yet</span></label>
+      </div></div>
+      <div class="field full"><div style="font-size:.9rem;font-weight:750;margin-bottom:9px">What's already in good shape? <span class="light">(Optional)</span></div><div class="checkrow">
+        <label class="check"><input type="checkbox" name="readiness_vacant" value="Yes">Vacant</label>
+        <label class="check"><input type="checkbox" name="readiness_cleaned" value="Yes">Cleaned</label>
+        <label class="check"><input type="checkbox" name="readiness_maintained" value="Yes">Maintained</label>
+        <label class="check"><input type="checkbox" name="readiness_ready_to_show" value="Yes">Ready to show</label>
+      </div></div>
+      <div class="field full"><div style="font-size:.9rem;font-weight:750;margin-bottom:9px">Any safety / access considerations? <span class="light">(Optional, check what fits)</span></div><div class="checkrow">
+        <label class="check"><input type="checkbox" name="safety_waiver" value="Yes">Waiver may be required</label>
+        <label class="check"><input type="checkbox" name="safety_rough_conditions" value="Yes">Rough / unfinished conditions</label>
+        <label class="check"><input type="checkbox" name="safety_occupied" value="Yes">Occupied / tenant coordination</label>
+        <label class="check"><input type="checkbox" name="safety_pets" value="Yes">Pets may be on-site</label>
+        <label class="check"><input type="checkbox" name="safety_access" value="Yes">Special access considerations</label>
+        <label class="check"><input type="checkbox" name="safety_utilities" value="Yes">Utilities / lighting concern</label>
+      </div><p class="hint-inline">Please flag anything that could affect visitor safety. A heads-up helps determine whether hosting is appropriate.</p></div>
+    </div>
+    <h3 class="form-section-title">03 — The cat question (yes, really)</h3>
+    <p class="light">A cat currently lives here, or did one live here recently? I can still show it. I just like to know whether the day's final sentence will be spoken through one functioning nostril.</p>
+    <div class="choices" role="group" aria-label="Cat history"><label class="choice"><input name="cat_status" type="radio" value="Current cat"><span>Current cat 🐈</span></label><label class="choice"><input name="cat_status" type="radio" value="Former cat"><span>Former cat</span></label><label class="choice"><input name="cat_status" type="radio" value="No known cat"><span>No known cat</span></label><label class="choice"><input name="cat_status" type="radio" value="Unknown" checked><span>Not sure</span></label></div>
+    <details><summary>The lockbox game (optional bonus round)</summary><div class="inner">
+      <label class="field">Any odd little access quirks?<textarea class="input" name="access_quirks" maxlength="500" placeholder="Example: The lock sticks; jiggle left–right, not up–down."></textarea></label>
+      <p class="safety"><strong>Safety note:</strong> Do not enter lockbox combinations, alarm codes, door codes, or sensitive entry credentials. Put those only in the authorized scheduling / showing system.</p>
+    </div></details>
+    <div style="height:16px"></div>
+    <label class="field">Anything else I should know? <span class="light">(Optional)</span><textarea class="input" name="notes" maxlength="1200" placeholder="A heads-up, a quirk, an FYI, or something future-me will be grateful you mentioned. No novel required."></textarea><span class="hint">Helpful context only. Please avoid personal or sensitive occupant information.</span></label>
+    <div class="form-actions"><button class="btn" id="submit-button" type="submit">Add listing(s) to my radar ↗</button><p>Submissions go straight into the intake queue. Unusual details are marked for follow-up, not silently blocked. Dates and times are requested separately.</p></div>
+    <div class="message" id="form-message" role="status" aria-live="polite"></div>
+  </form></div>
+</div></section>
+
+<section class="section alt" id="partner"><div class="wrap">
+  <p class="eyebrow">Open House(s) · New connections welcome</p>
+  <h2>Interested in working together? <em>Say hello.</em></h2>
+  <p class="extras-intro">You don't need a personal link or approval to add a property to the radar above. This separate form is simply for starting a conversation, and you're welcome to browse without registering.</p>
+  <form class="additional-panel" id="partner-interest-form" name="partner-interest" method="POST" action="/success" data-netlify="true" netlify-honeypot="website">
+    <input type="hidden" name="form-name" value="partner-interest"><p class="hide"><label>Leave this empty: <input name="website" tabindex="-1" autocomplete="off"></label></p>
+    <div class="fields">
+      <label class="field">Your name <span class="req">*</span><input class="input" name="name" required maxlength="90" autocomplete="name" placeholder="Your name"></label>
+      <label class="field">Email <span class="req">*</span><input class="input" name="email" type="email" required maxlength="180" autocomplete="email" placeholder="you@example.com"></label>
+      <label class="field">Phone (optional)<input class="input" name="phone" type="tel" maxlength="35" autocomplete="tel"></label>
+      <label class="field">Anything you'd like to share? (optional)<textarea class="input" name="notes" maxlength="1000" placeholder="An introduction, a question, or a quick hello."></textarea></label>
+    </div>
+    <label class="consent-line"><input type="checkbox" name="marketing_opt_in" value="Yes"><span>I'd like to receive occasional emails about Open House(s). Optional and separate from this message.</span></label>
+    <div class="control-row"><button class="btn" type="submit">Send an introduction ↗</button><p>Sending this form isn't required to browse or submit a property request.</p></div>
+    <div class="form-note" id="partner-interest-message" role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+<section class="section" id="updates"><div class="wrap">
+  <p class="eyebrow">Open House(s) · Opt in only</p>
+  <h2>Stay in the loop. <em>Only if you want to.</em></h2>
+  <p class="extras-intro">Occasional open-house news and opportunities. No account is required and no one is signed up simply by visiting.</p>
+  <form class="additional-panel" id="updates-form" name="open-house-updates" method="POST" action="/success" data-netlify="true" netlify-honeypot="website">
+    <input type="hidden" name="form-name" value="open-house-updates"><p class="hide"><label>Leave this empty: <input name="website" tabindex="-1" autocomplete="off"></label></p>
+    <div class="fields">
+      <label class="field">Name (optional)<input class="input" name="name" maxlength="90" autocomplete="name" placeholder="Your name"></label>
+      <label class="field">Email <span class="req">*</span><input class="input" name="email" type="email" maxlength="180" autocomplete="email" required placeholder="you@example.com"></label>
+    </div>
+    <label class="consent-line"><input type="checkbox" name="marketing_opt_in" value="Yes" required><span>Yes, I want to receive occasional marketing emails about Mythic Housing Open House(s). <span class="req">*</span></span></label>
+    <div class="control-row"><button class="btn" type="submit">Opt in to updates ↗</button><p>Only emails that you explicitly request. You can unsubscribe later.</p></div>
+    <div class="form-note" id="updates-message" role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><div><strong style="color:#fff">MYTHIC HOUSING · OPEN HOUSE(S)</strong><div>Weekdays first · Real properties · Realistic routes · Submissions are reviewed</div></div><div class="contact-list"><span>Schmid</span><a href="tel:+17034036706">(703) 403-6706</a><a href="mailto:Schmid@danlogan.com">Email</a><a href="https://www.pattersonschwartz.com/bio/zschmid" target="_blank" rel="noopener">Profile</a></div></div></footer>
 <script>
-(function(){'use strict';
-const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s)),max=25;let trustedPartner=null;
-$('#year').textContent=String(new Date().getFullYear());
-const isGAS=typeof google!=='undefined'&&google.script&&google.script.run;
-function normal(s){return String(s||'').toUpperCase().replace(/[\s#]/g,'').trim()}
-function mlsValues(){return $$('.mls-number').map(e=>normal(e.value)).filter(Boolean)}
-function addRow(v=''){if($$('.mls-row').length>=max)return;const row=document.createElement('div');row.className='mls-row';const inp=document.createElement('input');inp.type='text';inp.className='control mls-number';inp.maxLength=35;inp.autocapitalize='characters';inp.autocomplete='off';inp.spellcheck=false;inp.required=true;inp.value=v;inp.placeholder='e.g. DENC2109456';inp.setAttribute('aria-label','MLS number '+($$('.mls-row').length+1));inp.id='mls-'+($$('.mls-row').length+1);const rm=document.createElement('button');rm.type='button';rm.className='icon-btn';rm.textContent='×';rm.setAttribute('aria-label','Remove this MLS number');rm.addEventListener('click',()=>{row.remove();count();updateReview()});inp.addEventListener('input',updateReview);inp.addEventListener('blur',()=>{inp.value=normal(inp.value);updateReview()});row.append(inp,rm);$('#mlsRows').appendChild(row);count();updateReview()}
-function count(){const n=$$('.mls-row').length;$('#mlsCount').textContent=n+' / '+max;$('#addMls').disabled=n>=max;$$('.icon-btn').forEach(b=>b.disabled=n===1)}
-function area(){return $('input[name="mls_area"]:checked').value}
-function flagsFor(items){const f=[];if(!trustedPartner)f.push('Public / unverified submitter — contact check');if(area()==='OTHER')f.push('Other MLS area — regional check: '+($('#otherRegion').value.trim()||'unspecified'));const seen=new Set();items.forEach((s,i)=>{if(seen.has(s))f.push('Duplicate MLS ID in this request: '+s);seen.add(s);if(area()==='DE'&&!/^(?:DENC|DEKT|DESU)\d{7}$/.test(s))f.push('Check older/unusual Delaware MLS format: '+s);if(area()==='OTHER'&&!/^[A-Z0-9-]{4,30}$/.test(s))f.push('Unusual Other MLS format: '+s);if(!/^[A-Z0-9-]{4,35}$/.test(s))f.push('Special characters or very short MLS: '+s)});if(!items.length)f.push('MLS number is required');return [...new Set(f)]}
-function updateReview(){const items=mlsValues(),flags=flagsFor(items);$('#mlsPayload').value=items.join(' | ');$('#reviewStatus').value=flags.length?'⚠ NEEDS REVIEW':'NEW';$('#reviewFlags').value=flags.map(x=>'⚠ '+x).join('\n')||'No automatic flags';const container=$('#reviewPreview');container.replaceChildren();const title=document.createElement('strong');title.textContent=flags.length?'Review notes (submission still accepted):':'Automated checks: no additional flags';container.append(title);if(flags.length){const list=document.createElement('ul');list.className='flags';flags.forEach(f=>{const li=document.createElement('li');li.textContent=f;list.append(li)});container.append(list)}else{const p=document.createElement('p');p.textContent='The request still needs scheduling and listing verification.';p.style.margin='7px 0 0';container.append(p)}}
-function showMsg(id,msg,error=true){const el=$(id);el.textContent=msg;el.className='form-notice'+(error?' error':' success');el.hidden=false;el.scrollIntoView({block:'nearest',behavior:'smooth'})}
-function busy(on){$('#requestSubmit').disabled=on;$('#requestSubmit').textContent=on?'Submitting…':'Submit open house request →'}
-function checkedMembers(){return $$('#officeMemberOptions input:checked').map(e=>e.value)}
-function renderPartner(p){trustedPartner=p;const b=$('#partnerBanner');b.hidden=false;b.classList.remove('warning');$('#partnerTitle').textContent=p.scope==='Office'?'Welcome, '+(p.brokerage||p.name):'Welcome back, '+p.name;$('#partnerText').textContent='Assigned partner link recognized for source attribution. A link does not verify the person using it.';$('#contactBlock').hidden=true;$$('#contactBlock input').forEach(x=>x.required=false);$('#submissionSource').value='Assigned partner link';if(p.scope==='Office'&&Array.isArray(p.members)&&p.members.length){$('#officeTeam').hidden=false;const wrap=$('#officeMemberOptions');wrap.replaceChildren();p.members.forEach(name=>{const lab=document.createElement('label');lab.className='check-line';const input=document.createElement('input');input.type='checkbox';input.value=name;lab.append(input,document.createTextNode(name));wrap.appendChild(lab)})}updateReview()}
-function initializePartner(){const params=new URLSearchParams(location.search);const injected=String(window.MYTHIC_PARTNER||'');const t=params.get('partner')||params.get('ref')||(injected.startsWith('<?')?'':injected);if(!t)return;$('#partnerToken').value=t.slice(0,150);if(isGAS){google.script.run.withSuccessHandler(p=>{if(p&&p.partner)renderPartner(p.partner);else{const b=$('#partnerBanner');b.hidden=false;b.classList.add('warning');$('#partnerTitle').textContent='Partner link requires verification';$('#partnerText').textContent='You can still submit an open house request. Your entry will be marked for follow-up.';$('#submissionSource').value='Unrecognized partner link';updateReview()}}).withFailureHandler(()=>updateReview()).getBootstrap(t)}else{const b=$('#partnerBanner');b.hidden=false;b.classList.add('warning');$('#partnerTitle').textContent='Referral link received';$('#partnerText').textContent='This code will travel with your request. Partner status cannot be verified through the public website; please provide your contact information.';$('#submissionSource').value='Unverified referral link';updateReview()}}
-function payload(){return{partnerToken:$('#partnerToken').value,area:area(),otherArea:$('#otherRegion').value.trim(),mls:mlsValues(),name:$('#contactName').value.trim(),brokerage:$('#brokerage').value.trim(),email:$('#email').value.trim(),phone:$('#phone').value.trim(),members:checkedMembers(),timing:$('input[name="preferred_timing"]:checked').value,listingStage:$('#listingStage').value,readiness:$$('.readiness input:checked').filter(x=>x.name.startsWith('readiness_')).map(x=>x.name.replace('readiness_','')),notes:$('#notes').value.trim(),marketingOptIn:!!$('input[name="email_updates_opt_in"]').checked,companyWebsite:$('[name="website"]').value}}
-function toEncoded(form){const fd=new FormData(form);return new URLSearchParams(fd).toString()}
-async function netlifyPost(form){const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:toEncoded(form)});if(!response.ok)throw Error('Request could not be saved. Please try again.');location.href='/success'}
-function gasPost(fn,data,msgId,done){google.script.run.withSuccessHandler(r=>{busy(false);if(r&&r.ok!==false){showMsg(msgId,(r&&r.message)||'Request received for review.',false);if(done)done()}else showMsg(msgId,(r&&r.message)||'Unable to save the request.')} ).withFailureHandler(e=>{busy(false);showMsg(msgId,(e&&e.message)||'Unable to save the request. Please try again.')})[fn](data)}
-$('#addMls').addEventListener('click',()=>addRow());$$('input[name="mls_area"]').forEach(el=>el.addEventListener('change',()=>{const other=area()==='OTHER';$('#otherRegionWrap').hidden=!other;$('#otherRegion').required=other;updateReview()}));$('#otherRegion').addEventListener('input',updateReview);
-$('#requestForm').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget,items=mlsValues();if(!items.length){showMsg('#formMessage','Please enter at least one MLS number.');return}if(area()==='OTHER'&&!$('#otherRegion').value.trim()){showMsg('#formMessage','Please enter the other MLS region or system.');return}if(trustedPartner&&trustedPartner.scope==='Office'&&Array.isArray(trustedPartner.members)&&trustedPartner.members.length&&!checkedMembers().length){showMsg('#formMessage','Select at least one office agent for this request.');return}$$('.mls-number').forEach(el=>el.value=normal(el.value));updateReview();if(!form.checkValidity()){form.reportValidity();return}$('#officeAgents').value=checkedMembers().join(' | ');$('#formMessage').hidden=true;busy(true);if(isGAS){gasPost('submitRequest',payload(),'#formMessage',()=>{form.querySelector('#notes').value='';$('#mlsRows').replaceChildren();addRow()})}else{try{await netlifyPost(form)}catch(err){busy(false);showMsg('#formMessage',err.message)}}});
-for(const [formId,func,msg] of [['#partnerForm','registerInterest','#partnerMessage'],['#updatesForm','subscribeUpdates','#updatesMessage']]){$(formId).addEventListener('submit',async e=>{e.preventDefault();const f=e.currentTarget;if(!f.checkValidity()){f.reportValidity();return}if(isGAS){const fd=new FormData(f),data={name:String(fd.get('name')||''),brokerage:String(fd.get('brokerage')||''),email:String(fd.get('email')||''),phone:String(fd.get('phone')||''),notes:String(fd.get('notes')||''),marketingOptIn:fd.get('marketing_opt_in')==='Yes',companyWebsite:String(fd.get('website')||'')};gasPost(func,data,msg,()=>f.reset())}else{try{await netlifyPost(f)}catch(err){showMsg(msg,err.message)}}})}
-addRow();initializePartner();updateReview();
+(()=>{
+  const form=document.getElementById('listing-form');
+  const mls=document.getElementById('mls-numbers');
+  const counter=document.getElementById('mls-counter');
+  const area=document.getElementById('mls-area');
+  const otherWrap=document.getElementById('other-region-wrap');
+  const other=document.getElementById('other-region');
+  const status=document.getElementById('review-status');
+  const flags=document.getElementById('review-flags');
+  const msg=document.getElementById('form-message');
+  const btn=document.getElementById('submit-button');
+  const params=new URLSearchParams(location.search);
+  const referral=(params.get('ref') || params.get('partner') || '').trim().slice(0,80);
+  document.getElementById('partner-token').value=referral;
+  document.getElementById('submission-source').value=referral ? 'shared-link' : 'website';
+  function items(){return mls.value.split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean)}
+  function syncArea(){otherWrap.hidden=area.value!=='Other MLS';other.disabled=area.value!=='Other MLS'}
+  area.addEventListener('change',syncArea);syncArea();
+  mls.addEventListener('input',()=>{const n=items().length;counter.textContent=`${n} listing${n===1?'':'s'} entered · 25 maximum`;counter.style.color=n>25?'#ffd28a':''});
+  const checked=name=>Boolean(form.querySelector(`[name="${name}"]:checked`));
+  function classify(){const ids=items(), notes=[];
+    if(new Set(ids.map(x=>x.toUpperCase())).size!==ids.length)notes.push('Duplicate MLS numbers');
+    if(ids.some(x=> x.length<4 || x.length>22 || !/^[A-Za-z0-9-]+$/.test(x)))notes.push('Unusual MLS number format');
+    if(area.value==='Bright MLS' && ids.some(x=>!(/^(?:DENC|DEKT|DESU)\d{6,7}$/i.test(x)||/^\d{8,10}$/.test(x))))notes.push('Bright MLS format requires review');
+    if(area.value!=='Bright MLS')notes.push('MLS area to confirm');
+    if(form.elements.property_condition.value==='Investor / as-is / fixer')notes.push('Investor/as-is condition');
+    if(form.elements.listing_stage.value==='Coming soon')notes.push('Coming soon: showings only when eligible');
+    if(checked('safety_waiver'))notes.push('Possible waiver');
+    if(checked('safety_rough_conditions'))notes.push('Rough/unfinished conditions');
+    if(checked('safety_occupied'))notes.push('Occupied or tenants');
+    if(checked('safety_pets'))notes.push('Pets on-site');
+    if(checked('safety_access'))notes.push('Special access');
+    if(checked('safety_utilities'))notes.push('Utilities concern');
+    if((form.elements.access_quirks.value||'').trim())notes.push('Access quirk noted');
+    if(['Current cat','Former cat'].includes(form.elements.cat_status.value))notes.push('Cat history for route');
+    if((form.elements.notes.value||'').trim())notes.push('Read free-text notes');
+    notes.unshift(referral ? 'Partner link supplied — identity not independently verified' : 'Public website — new sender to verify');
+    flags.value=notes.join(' | ');
+    status.value='REVIEW HIGHLIGHT';return notes;
+  }
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();msg.className='message';msg.textContent='';
+    const ids=items();
+    if(ids.length<1||ids.length>25){msg.textContent='Please enter between 1 and 25 MLS numbers.';msg.className='message err show';msg.scrollIntoView({behavior:'smooth',block:'center'});return}
+    mls.value=ids.join('\n');const review=classify();
+    btn.disabled=true;btn.textContent='Sending…';
+    try{
+      const body=new URLSearchParams(new FormData(form));
+      const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()});
+      if(!response.ok)throw Error('Submission service returned '+response.status);
+      form.reset();syncArea();counter.textContent='One required; up to 25. Please use MLS IDs, not lockbox codes.';
+      msg.className='message ok show';msg.textContent=`Request sent! Your ${ids.length} listing${ids.length===1?' is':'s are'} on the radar for review.${review.length?' The heads-up details were tagged for follow-up.':''} This is not an appointment confirmation.`;
+      msg.scrollIntoView({behavior:'smooth',block:'center'});
+    }catch(error){msg.className='message err show';msg.textContent='The request could not be confirmed. Your entries are still here — please try again or contact me directly. ('+error.message+')';msg.scrollIntoView({behavior:'smooth',block:'center'});}
+    finally{btn.disabled=false;btn.textContent='Add listing(s) to my radar ↗'}
+  });
 })();
+
+  function handleSimpleForm(formId,messageId){
+    const f=document.getElementById(formId), msg=document.getElementById(messageId); if(!f)return;
+    f.addEventListener('submit',async e=>{
+      e.preventDefault(); if(!f.reportValidity())return;
+      const btn=f.querySelector('button[type="submit"]'),oldText=btn.textContent;
+      btn.disabled=true;btn.textContent='Sending…';msg.classList.remove('show');
+      try {
+        const body=new URLSearchParams(new FormData(f));
+        const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()});
+        if(!res.ok)throw Error('Submission returned '+res.status);
+        f.reset();msg.textContent='Thanks! Your message was received.';msg.classList.add('show');
+      }catch(err){msg.textContent='The submission could not be confirmed. Your entries are still here. Please try again.';msg.classList.add('show')}
+      finally{btn.disabled=false;btn.textContent=oldText}
+    });
+  }
+  handleSimpleForm('partner-interest-form','partner-interest-message');
+  handleSimpleForm('updates-form','updates-message');
 </script>
-</body></html>
+</body>
+</html>
