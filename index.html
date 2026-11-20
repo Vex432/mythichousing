@@ -138,6 +138,28 @@
   @media(max-width:820px){.season-dogs{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:580px){.season-dogs{grid-template-columns:1fr}.season-break img{width:98px;height:110px}.season-break .wrap{gap:14px}}
 
+
+/* Season-led real-photo gallery: original photography, no breed or coat alterations. */
+.season-photo-feature{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(245px,.65fr);overflow:hidden;border-radius:24px;border:1px solid #b897ce55;background:#1b1127;box-shadow:0 24px 66px #0004;margin:0 0 25px}
+.season-stage-media{position:relative;min-height:360px;aspect-ratio:1.45;overflow:hidden;background:#201629}
+.season-stage-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.season-stage-copy{padding:clamp(24px,4vw,42px);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.season-stage-copy .eyebrow{color:var(--season-accent);margin:0;font-size:.76rem;letter-spacing:.14em}
+.season-stage-copy h3{font-size:clamp(1.35rem,2.7vw,2.15rem);letter-spacing:-.025em;line-height:1.16;margin:0}
+.season-stage-copy p{color:#e0d3e8;margin:0 0 12px;font-size:.97rem}
+.season-photo-controls{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:10px}
+.season-photo-controls button{display:grid;place-items:center;min-width:44px;height:44px;background:#2d1b3d;color:white;border-radius:50%;border:1px solid #c09add77;font-size:1.25rem;transition:background .2s}
+.season-photo-controls button:hover,.season-photo-controls button:focus-visible{background:#6b3a90}
+.season-photo-controls output{font-size:.85rem;color:#d4c5df;min-width:48px;text-align:center}
+.season-gallery .season-dog-img{height:176px}
+.season-dog-copy small{display:block;margin-top:9px}
+.dog-family-note{margin:22px 0 0;color:#e2c9f2;font-size:.92rem}
+.dog-family-note strong{color:var(--season-accent)}
+.season-break-secondary{background:linear-gradient(100deg,#1d102c,var(--season-dim))}
+.season-break-secondary img{transform:rotate(-3deg)}
+@media(max-width:760px){.season-photo-feature{grid-template-columns:1fr}.season-stage-media{min-height:250px;aspect-ratio:16/10}.season-stage-copy{padding:24px}.season-gallery .season-dog-img{height:185px}}
+@media(max-width:580px){.season-stage-media{min-height:215px}.season-photo-feature{border-radius:18px}.season-stage-copy h3{font-size:1.5rem}}
+@media(prefers-reduced-motion:reduce){.season-photo-controls button{transition:none}}
 </style>
 </head>
 <body>
@@ -151,7 +173,7 @@
   <div class="wrap hero-grid">
     <div><p class="eyebrow">Open House(s) · Weekdays first</p>
       <h1 id="hero-title">More eyes on the property.<br><span>Less calendar chaos.</span></h1>
-      <p class="lead">Have a property that could host an open house? Add it to my radar as a <strong>possibility</strong>. I'm building practical, geographically grouped open-house routes to help listings get in front of more buyers <strong>or renters</strong>.</p>
+      <p class="lead">Have a property that could host an open house? Add it to my radar as a <strong>possibility</strong>. I'm building practical, geographically grouped open-house routes through <strong>collaboration and effective scheduling</strong>—more structured days, fewer scheduling surprises, and more opportunities to connect properties with future buyers <strong>or renters</strong>.</p>
       <div class="hero-actions"><a class="btn" href="#request">Add a listing to my radar <span aria-hidden="true">↗</span></a><a class="btn ghost" href="#process">See the process</a></div>
       <p class="meta">A request is not a confirmed appointment. No need to choose dates or times here. You can explore the site without signing up.</p>
     </div>
@@ -165,7 +187,7 @@
   </div>
 </section>
 <section class="section" id="process"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">The goal is to get qualified open-house possibilities on the calendar with enough lead time to be seen. Here is how a request becomes an actual event.</p></div></div>
+  <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">A collaborative effort makes for better-planned days and more opportunities for properties to meet future occupants. Here is how a possibility becomes an actual event—with clear roles and enough lead time.</p></div></div>
   <div class="progress-caption">First, we get it on the radar</div>
   <div class="steps">
     <article class="step"><span class="circle">1</span><h3>You submit a possibility</h3><p>Send the MLS number(s) and your name, email, and phone. A little context helps; perfection is not required.</p></article>
@@ -181,7 +203,7 @@
   </div>
   <div class="note-card" style="margin-top:18px"><div class="emoji" aria-hidden="true">✦</div><div><h3>Optional, but highly recommended: give it some extra attention.</h3><p>Post a flyer or social media announcement and, where permitted, email the people who have inquired about, clicked, saved, or expressed interest in the property. Pair that outreach with an MLS-registered open house as soon as the time is approved. More lead time gives the event a better chance of being noticed.</p></div></div>
 </div></section>
-<section class="season-break" aria-label="Dog photo interlude"><div class="wrap"><div><strong>Good routes. Better tail wags.</strong><p>A little breathing room between the details.</p></div><img src="assets/mythic-dog-01.jpg" alt="Black dog in a teal harness outside" width="600" height="481" loading="lazy"></div></section>
+<section class="season-break" aria-label="Dog photo interlude"><div class="wrap"><div><strong>Good routes. Better tail wags.</strong><p>A little breathing room between the details—and a reminder that good days need room to roam.</p></div><img id="route-dog-photo" src="assets/season-autumn-portrait.webp" alt="Black and white dog standing in an autumn clearing" width="1160" height="828" loading="lazy"></div></section>
 <section class="section alt" id="dates"><div class="wrap">
   <p class="eyebrow">Dates &amp; times</p><h2>Short windows. <em>Smart routes.</em></h2>
   <p class="sub" style="margin-bottom:25px">Weekday open houses are the focus. Evenings and weekends may be considered occasionally for the right property and route, but they aren't selectable request preferences.</p>
@@ -204,7 +226,7 @@
   <div class="note-card"><div class="emoji" aria-hidden="true">✉</div><div><h3>Know someone who isn't quite ready to buy or rent?</h3><p>Those inquiries matter, too. If someone wants support improving credit or becoming better prepared, I'm happy to help connect them with people and resources that may be useful. Please ask their permission before sharing contact information. No promises, pressure, or judgments — just a possible next step. <a href="mailto:Schmid@danlogan.com?subject=Resource%20connection%20inquiry">Start a conversation</a>.</p></div></div>
 </div></section>
 <section class="section season-gallery" id="doggos" aria-labelledby="dog-title"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Four seasons · Three familiar faces</p><h2 id="dog-title">The doggos, <em>year-round.</em></h2><p class="sub">Because the open-house process can have a little personality. Meet Fancy, Bougie, and Style—without changing how these real dogs look.</p></div></div>
+  <div class="section-head"><div><p class="eyebrow">Four seasons · Three familiar faces</p><h2 id="dog-title">The doggos, <em>year-round.</em></h2><p class="sub">Original dog photos, a little humor, and a different view each season. The plan stays professional; the unofficial welcome committee keeps it personable.</p></div></div>
   <div class="season-switch" role="group" aria-label="Seasonal theme">
      <button type="button" data-season-pick="spring" aria-pressed="false">🌷 Spring</button>
      <button type="button" data-season-pick="summer" aria-pressed="false">☀️ Summer</button>
@@ -212,12 +234,19 @@
      <button type="button" data-season-pick="winter" aria-pressed="false">❄️ Winter</button>
   </div>
   <p class="season-line" id="season-line" aria-live="polite">Golden leaves, crisp air, and good company.</p>
-  <div class="season-dogs">
-    <article class="season-dog"><div class="season-dog-img"><img src="assets/fancy.webp" alt="Fancy, black dog with a white chest, near an autumn lakeside." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Fancy's photo</span></div><div class="season-dog-copy"><strong>Fancy</strong><small>Our lakeside explorer.</small></div></article>
-    <article class="season-dog"><div class="season-dog-img"><img src="assets/bougie.webp" alt="Bougie, black puppy with a white muzzle marking on bright green grass." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Bougie's photo</span></div><div class="season-dog-copy"><strong>Bougie</strong><small>Small pup, big personality.</small></div></article>
-    <article class="season-dog"><div class="season-dog-img"><img src="assets/style.webp" alt="Style, smooth short-coated black white and tan dog running through teal smoke." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Style's photo</span></div><div class="season-dog-copy"><strong>Style</strong><small>Sleek, short-coated, and always on the move.</small></div></article>
+  <div class="season-photo-feature" id="season-photo-feature" aria-label="Rotating dog photography">
+  <div class="season-stage-media"><img id="season-feature-photo" src="assets/season-autumn-portrait.webp" width="1160" height="828" alt="Black-and-white dog in an autumn field" decoding="async" loading="lazy"></div>
+  <div class="season-stage-copy"><p class="eyebrow">Through the seasons · Real photos</p><h3 id="season-photo-title">A good day starts with a little breathing room.</h3>
+    <p id="season-photo-caption">Fall colors, a familiar face, and enough time to appreciate the route.</p>
+    <div class="season-photo-controls"><button id="season-photo-prev" type="button" aria-label="Previous dog photo">‹</button><output id="season-photo-count" aria-label="Photo number">1 / 2</output><button id="season-photo-next" type="button" aria-label="Next dog photo">›</button></div>
   </div>
-  <p class="pet-note">The seasonal theme changes the page atmosphere, not the dogs' appearance. Original photos remain the reference.</p>
+</div>
+<div class="season-dogs">
+    <article class="season-dog"><div class="season-dog-img"><img src="assets/fancy.webp" alt="Fancy, black dog with a white chest, near an autumn lakeside." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Fancy's photo</span></div><div class="season-dog-copy"><strong>Fancy Pants</strong><small>Seasoned welcome specialist. Especially attentive to 55+ neighbors, veterans, and anyone having a stressful day. A friendly hand—or foot—earns bonus points.</small></div></article>
+    <article class="season-dog"><div class="season-dog-img"><img src="assets/bougie.webp" alt="Bougie, black puppy with a white muzzle marking on bright green grass." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Bougie's photo</span></div><div class="season-dog-copy"><strong>Bougie</strong><small>Unofficial comfort inspector. Prefers relaxed visitors, a welcoming space, and an itinerary that respects snack breaks.</small></div></article>
+    <article class="season-dog"><div class="season-dog-img"><img src="assets/style.webp" alt="Style, smooth short-coated black white and tan dog running through teal smoke." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Style's photo</span></div><div class="season-dog-copy"><strong>Style</strong><small>Ready for action. Loves a well-planned route; less enthusiastic about driving in circles for no good reason.</small></div></article>
+  </div>
+  <p class="dog-family-note"><strong>Unofficial family tree:</strong> Fancy is Style’s biological mom and Bougie’s adoptive mom. Matriarch of the welcome committee; no paperwork necessary.</p><p class="pet-note">Real photos stay real, regardless of season. Some seasonal shots may feature the wider dog-photo collection; names are only used for the confirmed reference portraits above.</p>
 </div></section>
 <section class="section" id="request"><div class="wrap">
   <div class="section-head"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone and MLS number(s) are the essentials. Anything else is a helpful heads-up, not an audition. Properties are reviewed for fit; submitting does not reserve a date or time.</p></div></div>
@@ -276,6 +305,7 @@
   </form></div>
 </div></section>
 
+<section class="season-break season-break-secondary" aria-label="Teamwork photo interlude"><div class="wrap"><div><strong>Collaboration looks good on everyone.</strong><p>Clear communication, thoughtfully grouped stops, and a route that works for the people involved.</p></div><img id="team-dog-photo" src="assets/season-autumn-run.webp" alt="Black dog enjoying a fall day outdoors" width="1160" height="828" loading="lazy"></div></section>
 <section class="section alt" id="partner"><div class="wrap">
   <p class="eyebrow">Open House(s) · New connections welcome</p>
   <h2>Interested in working together? <em>Say hello.</em></h2>
@@ -388,18 +418,84 @@
   handleSimpleForm('updates-form','updates-message');
 </script>
 <script>
-(()=>{const options=['winter','winter','spring','spring','spring','summer','summer','summer','autumn','autumn','autumn','winter'];
- const words={spring:'Fresh starts, longer days, and time outdoors.',summer:'Sunshine, green grass, and plenty of tail wags.',autumn:'Golden leaves, crisp air, and good company.',winter:'Crisp air, cozy moments, and the same good dogs.'};
- const tabs=[...document.querySelectorAll('[data-season-pick]')];
- function setSeason(season){document.body.dataset.season=season;tabs.forEach(t=>t.setAttribute('aria-pressed',String(t.dataset.seasonPick===season)));document.getElementById('season-line').textContent=words[season]}
- tabs.forEach(t=>t.addEventListener('click',()=>setSeason(t.dataset.seasonPick)));
- setSeason(options[new Date().getMonth()]);
- document.querySelectorAll('.season-dog-img img').forEach(img=>{
-  const fallback=img.nextElementSibling;
-  if(img.complete&&img.naturalWidth){fallback.hidden=true}
-  img.addEventListener('load',()=>{fallback.hidden=true;img.hidden=false});
-  img.addEventListener('error',()=>{img.hidden=true;fallback.hidden=false});
- });
+(()=>{
+  'use strict';
+  const months=['winter','winter','spring','spring','spring','summer','summer','summer','autumn','autumn','autumn','winter'];
+  const words={
+    spring:'New possibilities, fresh starts, and enough daylight to enjoy the route.',
+    summer:'Long days, cool water, and a reason to keep the itinerary efficient.',
+    autumn:'Golden leaves, crisp air, and good company.',
+    winter:'Cozy moments, clear plans, and fewer last-minute surprises.'
+  };
+  const gallery={
+    spring:[
+      {src:'assets/season-spring-leap.webp',alt:'Athletic black-and-white dog leaping toward a flying red disc over a grassy field',title:'Ready for the next opportunity?',caption:'A fresh season is a good reminder to make room for new possibilities.'},
+      {src:'assets/season-spring-frisbee.webp',alt:'Black-and-white dog running with a red flying disc across the grass',title:'Strong starts. Smart timing.',caption:'A little planning goes a long way—especially when everyone is ready to move.'}
+    ],
+    summer:[
+      {src:'assets/season-summer-splash.webp',alt:'Black dog splashing through the shallow water of a river',title:'Keep the day moving.',caption:'Good routes leave room for the fun parts—and the occasional splash.'},
+      {src:'assets/season-summer-wading.webp',alt:'Alert black dog with upright ears standing in sunlit water',title:'Stay curious. Keep it simple.',caption:'An easy, effective schedule lets everyone focus on what matters.'},
+      {src:'assets/season-summer-river.webp',alt:'Black dog with upright ears splashing through a sunlit stream',title:'More connections. Less circling.',caption:'A thoughtfully planned route is better than trying to be everywhere at once.'}
+    ],
+    autumn:[
+      {src:'assets/season-autumn-portrait.webp',alt:'Black-and-white dog standing in an autumn clearing with trees behind',title:'A good day starts with breathing room.',caption:'Crisp air, familiar faces, and enough time to enjoy the route.'},
+      {src:'assets/season-autumn-run.webp',alt:'Black-and-white dog running across golden grass beside autumn trees',title:'A little momentum helps.',caption:'The best opportunities come from coordination, not calendar chaos.'}
+    ],
+    winter:[
+      {src:'assets/season-winter-portrait.webp',alt:'Short-coated tricolor dog photographed with a softly snowy background',title:'Warm welcomes, whatever the weather.',caption:'Good company is always in season. So are clear expectations.'},
+      {src:'assets/season-winter-stream.webp',alt:'Black-and-white dog standing near cold reflective water',title:'Keep the route thoughtful.',caption:'A little extra planning makes the colder days easier for everyone.'}
+    ]
+  };
+  const tabs=[...document.querySelectorAll('[data-season-pick]')];
+  const feature=document.getElementById('season-photo-feature');
+  const pic=document.getElementById('season-feature-photo');
+  const title=document.getElementById('season-photo-title');
+  const caption=document.getElementById('season-photo-caption');
+  const count=document.getElementById('season-photo-count');
+  const seasonLine=document.getElementById('season-line');
+  const route=document.getElementById('route-dog-photo');
+  const team=document.getElementById('team-dog-photo');
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let season='autumn',index=0,timer=null;
+  function updatePhoto(){
+    const photos=gallery[season],photo=photos[index];
+    if(!photo)return;
+    pic.src=photo.src;pic.alt=photo.alt;
+    title.textContent=photo.title;caption.textContent=photo.caption;
+    count.textContent=String(index+1)+' / '+String(photos.length);
+  }
+  function stop(){if(timer){window.clearInterval(timer);timer=null}}
+  function start(){
+    stop();
+    if(reduceMotion.matches||document.hidden||!feature)return;
+    timer=window.setInterval(()=>{index=(index+1)%gallery[season].length;updatePhoto()},12000);
+  }
+  function setSeason(value){
+    if(!gallery[value])return;
+    season=value;index=0;document.body.dataset.season=value;
+    tabs.forEach(tab=>tab.setAttribute('aria-pressed',String(tab.dataset.seasonPick===value)));
+    seasonLine.textContent=words[value];
+    route.src=gallery[value][0].src;route.alt=gallery[value][0].alt;
+    const final=gallery[value][gallery[value].length-1];
+    team.src=final.src;team.alt=final.alt;
+    updatePhoto();start();
+  }
+  tabs.forEach(tab=>tab.addEventListener('click',()=>setSeason(tab.dataset.seasonPick)));
+  document.getElementById('season-photo-prev').addEventListener('click',()=>{index=(index+gallery[season].length-1)%gallery[season].length;updatePhoto();start()});
+  document.getElementById('season-photo-next').addEventListener('click',()=>{index=(index+1)%gallery[season].length;updatePhoto();start()});
+  feature.addEventListener('mouseenter',stop);
+  feature.addEventListener('mouseleave',start);
+  feature.addEventListener('focusin',stop);
+  feature.addEventListener('focusout',e=>{if(!feature.contains(e.relatedTarget))start()});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
+  if(typeof reduceMotion.addEventListener==='function')reduceMotion.addEventListener('change',start);
+  setSeason(months[new Date().getMonth()]);
+  document.querySelectorAll('.season-dog-img img').forEach(img=>{
+    const fallback=img.nextElementSibling;
+    if(img.complete&&img.naturalWidth){fallback.hidden=true}
+    img.addEventListener('load',()=>{fallback.hidden=true;img.hidden=false});
+    img.addEventListener('error',()=>{img.hidden=true;fallback.hidden=false});
+  });
 })();
 </script>
 </body>
