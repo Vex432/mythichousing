@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0811">
+  <meta name="theme-color" content="#080a13">
   <meta name="description" content="Add a sale or rental listing to the radar for a possible weekday open house. Simple requests, thoughtful route planning, and clearer MLS coordination.">
   <title>Open House(s) | Mythic Housing</title>
   <style>
@@ -139,6 +139,89 @@
 .season-break-secondary img{transform:rotate(-3deg)}
 @media(max-width:820px){.season-dogs{grid-template-columns:repeat(2,minmax(0,1fr))}.autumn-stills{grid-template-columns:1fr 1fr}}
 @media(max-width:580px){.autumn-stills{grid-template-columns:1fr}.autumn-stills img{height:230px}.season-dogs{grid-template-columns:1fr}.season-dog-img{height:260px}.season-break img{width:98px;height:110px}.season-break .wrap{gap:14px}}
+
+/* 2026 visual pass: cooler violet, calmer backgrounds, accessible reading sizes. */
+html{font-size:18px}
+:root{--bg:#080a13;--card:#101525;--card2:#151b2e;--line:rgba(168,153,255,.26);--text:#f7f8ff;--muted:#d7def1;--faint:#bac4df;--purple:#8b5cf6;--purple2:#6d28d9;--purple3:#c4b5fd;--radius:20px;--season-accent:#c4b5fd}
+body{font-size:clamp(18px,1.14vw,20px);line-height:1.57;background:#080a13;color:var(--text)}
+body::before{background:radial-gradient(ellipse at 94% 10%,rgba(81,43,172,.095),transparent 39%)}
+html{scroll-padding-top:88px}
+.wrap{max-width:1220px}
+.topbar{background:rgba(8,10,19,.96);border-color:#47456c;backdrop-filter:blur(12px)}
+.logo{font-size:.85rem;letter-spacing:.1em}
+.logo-mark{background:#1b1536;border-color:#7c3aed;box-shadow:0 0 0 1px #7c3aed44;color:#eee7ff}
+.navlinks a{font-size:.86rem;color:#e4e8fb}
+.btn{background:#7c3aed;color:#fff;border:1px solid #9b75ff;box-shadow:0 9px 24px rgba(68,35,146,.24);border-radius:13px;min-height:52px;transition:background-color .18s,transform .18s}
+.btn:hover{background:#6d28d9;color:#fff;filter:none}
+.btn.ghost{background:#111629;color:#e7eaff;border-color:#8176bc}
+.btn.ghost:hover{background:#1b2240}
+.btn.small{min-height:44px;font-size:.88rem;padding:9px 16px}
+.hero{padding:clamp(62px,6vw,94px) 0 65px;background:linear-gradient(115deg,#080a13 25%,#10122b 100%)}
+.hero::before{content:"";position:absolute;width:7px;height:160px;right:5.5%;top:16%;border-radius:15px;background:linear-gradient(#9f78ff,#6d28d9);box-shadow:0 0 45px #6d28d933;pointer-events:none}
+.bubble{display:none!important;animation:none!important}
+.hero-grid{gap:clamp(28px,5vw,62px)}
+h1{font-size:clamp(2.7rem,5.6vw,5.25rem);line-height:1.05;letter-spacing:-.048em;max-width:16ch}
+h1 span,h2 em{color:#aa8aff}
+h2{font-size:clamp(2.15rem,3.7vw,3.35rem);line-height:1.14;letter-spacing:-.025em}
+h3{line-height:1.22}
+.eyebrow,.progress-caption,.feature .num,.glass-title{font-size:.86rem;letter-spacing:.09em;color:#c4b5fd}
+.lead{font-size:clamp(1.12rem,1.72vw,1.36rem);line-height:1.55;max-width:56ch;color:#e3e8f7}
+.meta,.sub,.time-note,.pet-note,.extras-intro{color:#cbd4eb;font-size:1rem}
+.sub{max-width:64ch}
+.glass{background:#11172a;border:1px solid #514b86;border-radius:21px;box-shadow:none}
+.glass::before{display:none}
+.radar-line{border-color:#353a5c;padding:12px 0}
+.radar-line strong{font-size:1.06rem}
+.radar-line small{color:#d0d9ec;font-size:.92rem}
+.round{background:#27204b!important;color:#ede6ff!important}
+.chip{background:#221d3d;border-color:#5b4b96;color:#e0dafa;font-size:.85rem}
+.section{padding:clamp(55px,7vw,92px) 0}
+.section.alt{background:#0e1220}
+.feature,.step,.time-card,.note-card,.season-dog,.autumn-stills figure{background:#111727;border:1px solid #373d61;border-radius:18px;box-shadow:none}
+.feature,.step{padding:clamp(20px,2.4vw,28px)}
+.step h3,.feature h3{font-size:1.35rem}
+.step p,.feature p,.time-card p,.rule p,.note-card p{font-size:1rem;line-height:1.54;color:#d6def0}
+.step .circle{background:#6d28d9;color:#fff;width:42px;height:42px;font-size:1.05rem}
+.step.wide{background:#1a1940;border-color:#6d55b0}
+.feature .num{margin-bottom:10px}
+.time-card h3,.rule h3,.note-card h3{font-size:1.37rem}
+.big-time{color:#b9a1ff}
+.rule{background:#171b30;border-color:#4c4a78}
+.rule .clock{background:#302259}
+.inline-details{background:#0e1324;border-color:#47466b;padding:12px 16px;margin-top:15px;font-size:.93rem}
+.inline-details summary{color:#ddd3ff;font-size:1rem}
+.inline-details p{margin:12px 0 0}
+.note-card{gap:18px}
+.form-shell,.additional-panel{background:#11172a;border:1px solid #555084;border-radius:20px;box-shadow:none}
+.form-section-title{color:#c4b5fd;font-size:1.18rem}
+label.field{font-size:1rem}
+label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
+.input{background:#090e1e;border:1px solid #6c6a95;font-size:1rem;min-height:54px;color:#fff}
+.input:focus{border-color:#b5a0ff;box-shadow:0 0 0 3px rgba(127,96,233,.25)}
+.input::placeholder{color:#a4aac6}
+.choice span,.check,.additional-panel .consent-line{font-size:1rem}
+.choice span{min-height:47px}
+.form-actions p,.additional-panel .control-row p{font-size:.91rem}
+.season-gallery{background:#101222}
+.season-dog{background:#101629}
+.season-dog-copy strong{font-size:1.28rem}
+.season-dog-copy .dog-alias{color:#b7a0ff;font-size:1rem}
+.season-dog-copy small{font-size:1rem;color:#d4ddef}
+.autumn-stills figcaption{font-size:1rem;color:#d7e0f3}
+.autumn-stills figcaption strong{font-size:1.1rem}
+.season-break,.season-break-secondary{background:#17182b;border-color:#424266}
+.dog-family-note{color:#e1ddf7}
+.dog-family-note strong{color:#bcaaff}
+.footer{background:#090d19;color:#cbd3e8;font-size:.96rem}
+.footer a{color:#c4b5fd}
+.relationship-note{background:#171f39;border:1px solid #7163bb;border-left:4px solid #9979ff;border-radius:12px;padding:14px 18px;margin:0 0 25px;font-size:1rem;color:#e0e7fc;max-width:57ch}
+.relationship-note strong{display:block;color:#fff;font-size:1.15rem}
+.is-relationship #partner,.is-relationship #updates{display:none}
+.is-relationship .navlinks a[href="#partner"],.is-relationship .navlinks a[href="#updates"]{display:none}
+@media(max-width:850px){.hero{padding:68px 0 54px}.hero::before{height:110px;width:5px;right:20px;opacity:.55}.hero-grid{gap:28px}.three,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.wrap{padding:0 19px}.logo{font-size:.75rem;letter-spacing:.055em}.logo-mark{width:36px;height:36px}.btn.small{font-size:.83rem;min-height:43px;padding:9px 12px}.hero{padding:52px 0 45px}.hero::before{display:none}h1{font-size:clamp(2.55rem,11vw,3.5rem)}h2{font-size:clamp(2rem,8.5vw,2.7rem)}.hero-actions .btn{width:100%}.three,.steps,.small-grid,.fields,.checkrow,.pets{grid-template-columns:1fr}.glass,.form-shell,.additional-panel{padding:22px}.section{padding:56px 0}.season-dog-img{height:245px}.autumn-stills img{height:240px}.note-card,.rule{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
 </style>
 </head>
 <body>
@@ -148,25 +231,25 @@
 </div></header>
 <main id="top">
 <section class="hero" aria-labelledby="hero-title">
-  <div class="bubble a"></div><div class="bubble b"></div><div class="bubble c"></div><div class="bubble d"></div>
   <div class="wrap hero-grid">
     <div><p class="eyebrow">Open House(s) · Weekdays first</p>
-      <h1 id="hero-title">More eyes on the property.<br><span>Less calendar chaos.</span></h1>
-      <p class="lead">Have a property that could host an open house? Add it to my radar as a <strong>possibility</strong>. I'm building practical, geographically grouped open-house routes through <strong>collaboration and effective scheduling</strong>—more structured days, fewer scheduling surprises, and more opportunities to connect properties with future buyers <strong>or renters</strong>.</p>
+      <div class="relationship-note" id="relationship-note" hidden><strong>Welcome back.</strong> Thanks for continuing to collaborate. Have another listing in mind? The short path is right below.</div>
+      <h1 id="hero-title">More doors open.<br><span>Less calendar chaos.</span></h1>
+      <p class="lead">Have a sale or rental listing worth considering for a weekday open house? Add it to my radar. Together, we can organize promising properties into efficient routes, creating more structured days and more opportunities to connect properties with future occupants.</p>
       <div class="hero-actions"><a class="btn" href="#request">Add a listing to my radar <span aria-hidden="true">↗</span></a><a class="btn ghost" href="#process">See the process</a></div>
-      <p class="meta">A request is not a confirmed appointment. No need to choose dates or times here. You can explore the site without signing up.</p>
+      <p class="meta">Requests are possibilities, not confirmed appointments. No preferred times needed. Browsing never requires registration.</p>
     </div>
     <aside class="glass" aria-label="Good candidate checklist">
       <p class="glass-title">The ideal open-house candidate</p>
-      <div class="radar-line"><span class="round">01</span><div><strong>Vacant, if possible</strong><small>Fewer moving parts. Everyone appreciates fewer moving parts.</small></div></div>
-      <div class="radar-line"><span class="round">02</span><div><strong>Cleaned &amp; maintained</strong><small>Ready for visitors, not a surprise obstacle course.</small></div></div>
-      <div class="radar-line"><span class="round">03</span><div><strong>Ready to show</strong><small>Clear access instructions and safe conditions.</small></div></div>
+      <div class="radar-line"><span class="round">01</span><div><strong>Vacant, if possible</strong><small>Fewer moving parts and fewer surprises.</small></div></div>
+      <div class="radar-line"><span class="round">02</span><div><strong>Cleaned &amp; maintained</strong><small>A welcoming first impression matters.</small></div></div>
+      <div class="radar-line"><span class="round">03</span><div><strong>Ready to show</strong><small>Safe access with clear instructions.</small></div></div>
       <div class="ideal"><span class="chip">Newly active</span><span class="chip">Price reductions</span><span class="chip">Coming soon, for future review</span><span class="chip">Investor / as-is welcome for review</span></div>
     </aside>
   </div>
 </section>
 <section class="section" id="process"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">A collaborative effort makes for better-planned days and more opportunities for properties to meet future occupants. Here is how a possibility becomes an actual event—with clear roles and enough lead time.</p></div></div>
+  <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">Simple steps, clear roles, and enough lead time to turn a possibility into a well-coordinated open house.</p></div></div>
   <div class="progress-caption">First, we get it on the radar</div>
   <div class="steps">
     <article class="step"><span class="circle">1</span><h3>You submit a possibility</h3><p>Send the MLS number(s) and your name, email, and phone. A little context helps; perfection is not required.</p></article>
@@ -185,12 +268,12 @@
 <section class="season-break" aria-label="Dog photo interlude"><div class="wrap"><div><strong>Good routes. Better tail wags.</strong><p>A little breathing room between the details—and a reminder that good days need room to roam.</p></div><img id="route-dog-photo" src="assets/season-autumn-portrait.webp" alt="Black and white dog standing in an autumn clearing" width="1160" height="828" loading="lazy"></div></section>
 <section class="section alt" id="dates"><div class="wrap">
   <p class="eyebrow">Dates &amp; times</p><h2>Short windows. <em>Smart routes.</em></h2>
-  <p class="sub" style="margin-bottom:25px">Weekday open houses are the focus. Evenings and weekends may be considered occasionally for the right property and route, but they aren't selectable request preferences.</p>
+  <p class="sub" style="margin-bottom:25px">Weekdays are the focus. Evenings or weekends may occasionally make sense, but there is no preferred-time field.</p>
   <div class="small-grid">
     <div class="time-card"><div class="icon" aria-hidden="true">⌂</div><h3>Rental properties</h3><div class="big-time">15–30 minutes</div><p>A focused open-house window at one location. Time is requested through the usual scheduling system after I review the route.</p></div>
     <div class="time-card"><div class="icon" aria-hidden="true">◇</div><h3>Sale properties</h3><div class="big-time">15–30 minutes</div><p>Same practical baseline. I'll ask for a longer window when the itinerary and property allow it.</p></div>
   </div>
-  <div class="rule"><div class="clock" aria-hidden="true">◷</div><div><h3>MLS registration checkpoint: 6:00 p.m. the evening before</h3><p>To keep things consistent, I check that the open house is actually registered in the MLS by <strong>6:00 p.m. the day before</strong> the requested appointment. If it isn't, I remove that stop from the next-day route rather than holding a slot for an unadvertised event. I do not send individual reminder messages. Please register it as soon as you approve, rather than waiting for the checkpoint. The appointment alone does not advertise an open house.</p></div></div>
+  <div class="rule"><div class="clock" aria-hidden="true">◷</div><div><h3>MLS check: 6:00 p.m. the evening before</h3><p>Please register the matching MLS open house as soon as the appointment is approved. If it is not registered by my 6:00 p.m. planning checkpoint the day before, that stop comes off the route.</p><details class="inline-details"><summary>Why the checkpoint matters</summary><p>This is my scheduling cutoff, not a general MLS rule. I do not send individual reminders. An appointment alone does not advertise an open house; registering early gives it more visibility.</p></details></div></div>
   <div class="tipline"><span class="tip">72+ hours ahead when possible</span><span class="tip">Geographic grouping</span><span class="tip">No preferred-time field</span><span class="tip">Same registration checkpoint for every listing</span></div>
   <p class="time-note">Coming Soon properties can be submitted for future review, but any open house must comply with the listing's current MLS status and showing rules.</p>
 </div></section>
@@ -219,7 +302,7 @@
   <p class="pet-note">The portraits are based on the dogs’ real photographs. The autumn collection is intentionally still, with no autoplay or timed changes.</p>
 </div></section>
 <section class="section" id="request"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone and MLS number(s) are the essentials. Anything else is a helpful heads-up, not an audition. Properties are reviewed for fit; submitting does not reserve a date or time.</p></div></div>
+  <div class="section-head"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone, and MLS number(s) get the request started. Extra details help me assess fit. Submitting does not reserve a date or time.</p></div></div>
   <div class="form-shell">
   <form name="open-house-requests" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" id="listing-form">
     <input type="hidden" name="form-name" value="open-house-requests">
@@ -324,6 +407,11 @@
   const btn=document.getElementById('submit-button');
   const params=new URLSearchParams(location.search);
   const referral=(params.get('ref') || params.get('partner') || '').trim().slice(0,80);
+  // Referral links simplify the presentation; they never authenticate the visitor.
+  if(referral){
+    document.body.classList.add('is-relationship');
+    document.getElementById('relationship-note').hidden=false;
+  }
   document.getElementById('partner-token').value=referral;
   document.getElementById('submission-source').value=referral ? 'shared-link' : 'website';
   function items(){return mls.value.split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean)}
