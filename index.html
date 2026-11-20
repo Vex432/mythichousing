@@ -110,12 +110,40 @@
    .additional-panel .consent-line input{accent-color:#bb86f2;margin-top:5px}
    .additional-panel .screenreader{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(0,0,0,0)}
    @media(max-width:580px){.additional-panel{padding:22px}.additional-panel .control-row .btn{width:100%}}
+
+  /* Four-season design: dog photos remain authentic and unmodified. */
+  :root{--season-accent:#e9ad78;--season-dim:#492d26}
+  body[data-season="spring"]{--season-accent:#b0e3b3;--season-dim:#27433e}
+  body[data-season="summer"]{--season-accent:#f7ce79;--season-dim:#234c4b}
+  body[data-season="autumn"]{--season-accent:#e9ad78;--season-dim:#492d26}
+  body[data-season="winter"]{--season-accent:#c2d9fc;--season-dim:#253a59}
+  .season-gallery{background:radial-gradient(ellipse at 90% 0%,var(--season-dim),transparent 57%),#0e0a16;border-block:1px solid var(--line)}
+  .season-switch{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0 16px}
+  .season-switch button{min-height:42px;border:1px solid #916dad80;border-radius:999px;padding:8px 16px;color:#eee4f4;background:#1a1027;font-weight:750}
+  .season-switch button[aria-pressed="true"]{background:var(--season-accent);color:#1b1022;border-color:var(--season-accent)}
+  .season-line{color:#d5c8e0;font-size:.92rem;margin:0 0 24px}
+  .season-dogs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+  .season-dog{border:1px solid #b394c24a;border-radius:22px;overflow:hidden;background:#190f22}
+  .season-dog-img{height:242px;background:linear-gradient(140deg,var(--season-dim),#251231);display:grid;place-items:center;position:relative;overflow:hidden}
+  .season-dog-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .season-dog-img .fallback{padding:20px;text-align:center;color:#e7d4f7;line-height:1.5}
+  .season-dog-copy{padding:18px 20px 22px}
+  .season-dog-copy strong{display:block;font-size:1.25rem}
+  .season-dog-copy small{color:#c7b8d3;line-height:1.5}
+  .season-break{padding:27px 0;background:linear-gradient(90deg,#1b1128,var(--season-dim));border-block:1px solid #b695d943}
+  .season-break .wrap{display:flex;align-items:center;gap:24px;justify-content:space-between}
+  .season-break img{width:145px;height:120px;object-fit:cover;border-radius:15px;transform:rotate(3deg);border:1px solid #c7a4e366}
+  .season-break strong{font-size:clamp(1.3rem,2.8vw,2rem);line-height:1.3;display:block}
+  .season-break p{color:#dfd0e8;margin:4px 0 0}
+  @media(max-width:820px){.season-dogs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:580px){.season-dogs{grid-template-columns:1fr}.season-break img{width:98px;height:110px}.season-break .wrap{gap:14px}}
+
 </style>
 </head>
 <body>
 <header class="topbar"><div class="wrap nav">
   <a class="logo" href="#top" aria-label="Mythic Housing home"><span class="logo-mark" aria-hidden="true">⌂</span> MYTHIC HOUSING</a>
-  <nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav>
+  <nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#doggos">Doggos</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav>
 </div></header>
 <main id="top">
 <section class="hero" aria-labelledby="hero-title">
@@ -153,6 +181,7 @@
   </div>
   <div class="note-card" style="margin-top:18px"><div class="emoji" aria-hidden="true">✦</div><div><h3>Optional, but highly recommended: give it some extra attention.</h3><p>Post a flyer or social media announcement and, where permitted, email the people who have inquired about, clicked, saved, or expressed interest in the property. Pair that outreach with an MLS-registered open house as soon as the time is approved. More lead time gives the event a better chance of being noticed.</p></div></div>
 </div></section>
+<section class="season-break" aria-label="Dog photo interlude"><div class="wrap"><div><strong>Good routes. Better tail wags.</strong><p>A little breathing room between the details.</p></div><img src="assets/mythic-dog-01.jpg" alt="Black dog in a teal harness outside" width="600" height="481" loading="lazy"></div></section>
 <section class="section alt" id="dates"><div class="wrap">
   <p class="eyebrow">Dates &amp; times</p><h2>Short windows. <em>Smart routes.</em></h2>
   <p class="sub" style="margin-bottom:25px">Weekday open houses are the focus. Evenings and weekends may be considered occasionally for the right property and route, but they aren't selectable request preferences.</p>
@@ -174,13 +203,21 @@
   <div style="height:16px"></div>
   <div class="note-card"><div class="emoji" aria-hidden="true">✉</div><div><h3>Know someone who isn't quite ready to buy or rent?</h3><p>Those inquiries matter, too. If someone wants support improving credit or becoming better prepared, I'm happy to help connect them with people and resources that may be useful. Please ask their permission before sharing contact information. No promises, pressure, or judgments — just a possible next step. <a href="mailto:Schmid@danlogan.com?subject=Resource%20connection%20inquiry">Start a conversation</a>.</p></div></div>
 </div></section>
-<section class="section alt" aria-labelledby="dog-title"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">The unofficial office morale team</p><h2 id="dog-title">A cameo from <em>the doggos.</em></h2><p class="sub">Because even scheduling logistics could use a little personality.</p></div></div>
-  <div class="pets">
-    <div class="pet pet-photo-card"><img class="dog-photo" src="assets/mythic-dog-01.jpg" width="600" height="481" loading="lazy" alt="Happy black dog wearing a teal harness, smiling outside among fallen leaves."><div class="pet-copy"><strong>Professional greeter</strong><small>Here to improve morale, one tail wag at a time.</small></div></div>
-    <div class="pet"><span class="paws" aria-hidden="true">🐾</span><svg viewBox="0 0 100 100" role="img" aria-label="Illustrated dog with floppy ears"><path d="M33 22 Q12 5 9 31 Q9 58 27 57 L27 70 Q34 89 50 90 Q66 89 73 70 L73 57 Q91 58 91 31 Q88 5 67 22 Q50 11 33 22" fill="#7f5aa8" stroke="#d2acef" stroke-width="3"/><ellipse cx="50" cy="61" rx="25" ry="21" fill="#d0addf"/><circle cx="37" cy="46" r="4" fill="#271334"/><circle cx="63" cy="46" r="4" fill="#271334"/><ellipse cx="50" cy="59" rx="8" ry="6" fill="#271334"/><path d="M50 65 V70 M50 70 Q42 76 39 69 M50 70 Q58 76 61 69" stroke="#271334" stroke-width="3" fill="none" stroke-linecap="round"/></svg><strong>Chief route supervisor</strong><small>Another photo spot, ready when the real face behind the title arrives.</small></div>
+<section class="section season-gallery" id="doggos" aria-labelledby="dog-title"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Four seasons · Three familiar faces</p><h2 id="dog-title">The doggos, <em>year-round.</em></h2><p class="sub">Because the open-house process can have a little personality. Meet Fancy, Bougie, and Style—without changing how these real dogs look.</p></div></div>
+  <div class="season-switch" role="group" aria-label="Seasonal theme">
+     <button type="button" data-season-pick="spring" aria-pressed="false">🌷 Spring</button>
+     <button type="button" data-season-pick="summer" aria-pressed="false">☀️ Summer</button>
+     <button type="button" data-season-pick="autumn" aria-pressed="true">🍂 Fall</button>
+     <button type="button" data-season-pick="winter" aria-pressed="false">❄️ Winter</button>
   </div>
-  <p class="pet-note">One of the real doggos has made an appearance. The second illustrated spot is waiting for its photo debut.</p>
+  <p class="season-line" id="season-line" aria-live="polite">Golden leaves, crisp air, and good company.</p>
+  <div class="season-dogs">
+    <article class="season-dog"><div class="season-dog-img"><img src="assets/fancy.webp" alt="Fancy, black dog with a white chest, near an autumn lakeside." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Fancy's photo</span></div><div class="season-dog-copy"><strong>Fancy</strong><small>Our lakeside explorer.</small></div></article>
+    <article class="season-dog"><div class="season-dog-img"><img src="assets/bougie.webp" alt="Bougie, black puppy with a white muzzle marking on bright green grass." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Bougie's photo</span></div><div class="season-dog-copy"><strong>Bougie</strong><small>Small pup, big personality.</small></div></article>
+    <article class="season-dog"><div class="season-dog-img"><img src="assets/style.webp" alt="Style, smooth short-coated black white and tan dog running through teal smoke." loading="lazy" onerror="this.hidden=true"><span class="fallback">🐾<br>Style's photo</span></div><div class="season-dog-copy"><strong>Style</strong><small>Sleek, short-coated, and always on the move.</small></div></article>
+  </div>
+  <p class="pet-note">The seasonal theme changes the page atmosphere, not the dogs' appearance. Original photos remain the reference.</p>
 </div></section>
 <section class="section" id="request"><div class="wrap">
   <div class="section-head"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone and MLS number(s) are the essentials. Anything else is a helpful heads-up, not an audition. Properties are reviewed for fit; submitting does not reserve a date or time.</p></div></div>
@@ -272,7 +309,7 @@
   </form>
 </div></section>
 </main>
-<footer class="footer"><div class="wrap footer-inner"><div><strong style="color:#fff">MYTHIC HOUSING · OPEN HOUSE(S)</strong><div>Weekdays first · Real properties · Realistic routes · Submissions are reviewed</div></div><div class="contact-list"><span>Schmid</span><a href="tel:+17034036706">(703) 403-6706</a><a href="mailto:Schmid@danlogan.com">Email</a><a href="https://www.pattersonschwartz.com/bio/zschmid" target="_blank" rel="noopener">Profile</a></div></div></footer>
+<footer class="footer"><div class="wrap footer-inner"><div><strong style="color:#fff">MYTHIC HOUSING · OPEN HOUSE(S)</strong><div>Weekdays first · Real properties · Realistic routes · Submissions are reviewed</div></div><div class="contact-list"><span>Schmid</span><a href="tel:+17034036706">(703) 403-6706</a><a href="mailto:Schmid@danlogan.com">Email</a></div></div></footer>
 <script>
 (()=>{
   const form=document.getElementById('listing-form');
@@ -349,6 +386,21 @@
   }
   handleSimpleForm('partner-interest-form','partner-interest-message');
   handleSimpleForm('updates-form','updates-message');
+</script>
+<script>
+(()=>{const options=['winter','winter','spring','spring','spring','summer','summer','summer','autumn','autumn','autumn','winter'];
+ const words={spring:'Fresh starts, longer days, and time outdoors.',summer:'Sunshine, green grass, and plenty of tail wags.',autumn:'Golden leaves, crisp air, and good company.',winter:'Crisp air, cozy moments, and the same good dogs.'};
+ const tabs=[...document.querySelectorAll('[data-season-pick]')];
+ function setSeason(season){document.body.dataset.season=season;tabs.forEach(t=>t.setAttribute('aria-pressed',String(t.dataset.seasonPick===season)));document.getElementById('season-line').textContent=words[season]}
+ tabs.forEach(t=>t.addEventListener('click',()=>setSeason(t.dataset.seasonPick)));
+ setSeason(options[new Date().getMonth()]);
+ document.querySelectorAll('.season-dog-img img').forEach(img=>{
+  const fallback=img.nextElementSibling;
+  if(img.complete&&img.naturalWidth){fallback.hidden=true}
+  img.addEventListener('load',()=>{fallback.hidden=true;img.hidden=false});
+  img.addEventListener('error',()=>{img.hidden=true;fallback.hidden=false});
+ });
+})();
 </script>
 </body>
 </html>
