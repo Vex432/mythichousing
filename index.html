@@ -228,6 +228,52 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
 .style-illustration .style-paw{font-size:68px;line-height:1.2;opacity:.94}
 .style-illustration .style-image-label{display:block;font-size:clamp(1.9rem,3vw,2.55rem);letter-spacing:.13em;font-weight:900;line-height:1.15;color:#f5f1ff}
 .style-illustration small{font-size:.92rem;color:#d2c6ff;max-width:24ch}
+
+/* Separate reassuring public explainer from short relationship-link intake. */
+.public-answers{background:#0c1020;border-block:1px solid #37365c}
+.answers-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:12px}
+.answers-grid details{margin:0;background:#141a30;border:1px solid #454568;border-radius:14px;padding:18px 19px}
+.answers-grid details[open]{background:#1a1e3b;border-color:#7160bd}
+.answers-grid summary{font-size:1.08rem;line-height:1.35;font-weight:760;color:#f3f1ff;list-style:none}
+.answers-grid summary::-webkit-details-marker{display:none}
+.answers-grid summary::after{content:"+";float:right;color:#c5b4ff;font-size:1.3rem;margin-left:10px}
+.answers-grid details[open] summary::after{content:"−"}
+.answers-grid p{font-size:1rem;color:#d6dff2;line-height:1.55;margin:13px 0 0;max-width:50ch}
+.answers-action{display:flex;gap:22px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:22px;color:#d6dff2}
+.answers-action span{font-weight:730}
+.partner-request-title,.relationship-dogs{display:none}
+.optional-sections{margin:0;background:transparent;border:0;border-radius:0;padding:0}
+.optional-sections>summary{display:none}
+.optional-sections>.extras-body{padding:0}
+.is-relationship .optional-sections{background:#151b30;border:1px solid #4b4a79;border-radius:14px;padding:15px 18px;margin:20px 0 15px}
+.is-relationship .optional-sections>summary{display:list-item;cursor:pointer;color:#ddd5ff;font-size:1rem;font-weight:760}
+.is-relationship .optional-sections>.extras-body{padding-top:10px}
+.is-relationship .public-answers,.is-relationship #process,.is-relationship #dates,.is-relationship #notes,.is-relationship #doggos,.is-relationship #partner,.is-relationship #updates,.is-relationship .season-break{display:none}
+.is-relationship .navlinks a:not(.btn){display:none}
+.is-relationship .hero{padding:38px 0 30px;border-bottom:0;background:#0d1020}
+.is-relationship .hero-grid{display:block;max-width:1100px}
+.is-relationship .hero-grid>div:first-child>.eyebrow,.is-relationship .hero-grid h1,.is-relationship .hero-grid .lead,.is-relationship .hero-grid .hero-actions,.is-relationship .hero-grid .meta,.is-relationship .glass{display:none}
+.is-relationship .relationship-note{display:block;max-width:none;margin:0 auto 22px;padding:20px 24px;border-radius:14px;background:#181d36}
+.is-relationship .relationship-dogs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.relationship-dogs figure,.relationship-paw{margin:0;min-width:0;background:#171c31;border:1px solid #393b66;border-radius:14px;overflow:hidden}
+.relationship-dogs figure img{display:block;height:125px;width:100%;object-fit:cover;object-position:50% 38%}
+.relationship-dogs figure figcaption,.relationship-paw small{display:block;font-size:.86rem;line-height:1.3;padding:10px 12px;color:#e8e8f8}
+.relationship-paw{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center}
+.relationship-paw>span{font-size:3rem}
+.is-relationship #request{padding:30px 0 65px;background:#0b0f1e}
+.is-relationship #request .public-request-title{display:none}
+.is-relationship .partner-request-title{display:block;max-width:760px;margin:0 0 20px}
+.partner-request-title h2{margin-bottom:9px}
+.partner-request-title p{color:#d6def2;margin:0 0 8px;font-size:1rem}
+.partner-request-title .partner-region-hint{font-size:.88rem;color:#bab8dc}
+.is-relationship .form-shell{max-width:890px;padding:23px}
+.is-relationship #listing-form>.form-section-title{margin:0 0 17px}
+.is-relationship #listing-form>.fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+.is-relationship #listing-form>.fields .field.full{grid-column:1 / -1}
+.is-relationship #listing-form>label.field{margin-top:10px}
+.is-relationship .form-actions{margin-top:24px}
+.is-relationship .footer{padding:24px 0}
+@media(max-width:680px){.answers-grid{grid-template-columns:1fr}.is-relationship .relationship-dogs{grid-template-columns:1fr 1fr}.relationship-paw{display:none}.relationship-dogs figure img{height:140px}.is-relationship #listing-form>.fields{grid-template-columns:1fr}.is-relationship .hero{padding:22px 0}.is-relationship #request{padding:20px 0 45px}.is-relationship .form-shell{padding:20px}}
 </style>
 </head>
 <body>
@@ -239,11 +285,16 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
     <div><p class="eyebrow">Open House(s) · Weekdays first</p>
-      <div class="relationship-note" id="relationship-note" hidden><strong>Welcome back.</strong> Thanks for continuing to collaborate. Have another listing in mind? The short path is right below.</div>
+      <div class="relationship-note" id="relationship-note" hidden><strong>Good to see you again.</strong> Thank you for continuing to collaborate. Keep it simple: send the MLS number(s), share any helpful heads-up, and I’ll review the possibilities.</div>
       <h1 id="hero-title">More doors open.<br><span>Less calendar chaos.</span></h1>
       <p class="lead">Have a sale or rental listing worth considering for a weekday open house? Add it to my radar. Together, we can organize promising properties into efficient routes, creating more structured days and more opportunities to connect properties with future occupants.</p>
       <div class="hero-actions"><a class="btn" href="#request">Add a listing to my radar <span aria-hidden="true">↗</span></a><a class="btn ghost" href="#process">See the process</a></div>
       <p class="meta">Requests are possibilities, not confirmed appointments. No preferred times needed. Browsing never requires registration.</p>
+      <div class="relationship-dogs" aria-label="A hello from the unofficial welcome committee">
+        <figure><img src="assets/fancy-portrait.webp" alt="Fancy in an autumn field" loading="lazy"><figcaption>Fancy says welcome back.</figcaption></figure>
+        <figure><img src="assets/bougie-portrait.webp" alt="Bougie with alert ears beside the water" loading="lazy"><figcaption>Bougie is considering adopting you.</figcaption></figure>
+        <div class="relationship-paw" aria-label="A pawprint for Style"><span aria-hidden="true">🐾</span><small>Style sends extra wiggles.</small></div>
+      </div>
     </div>
     <aside class="glass" aria-label="Good candidate checklist">
       <p class="glass-title">The ideal open-house candidate</p>
@@ -254,6 +305,20 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
     </aside>
   </div>
 </section>
+<section class="section public-answers" id="quick-answers" aria-labelledby="quick-answers-title"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Good to know · Before you send a listing</p><h2 id="quick-answers-title">The quick answers. <em>No guessing.</em></h2><p class="sub">What this is, how it works, and what to expect—without an information scavenger hunt.</p></div></div>
+  <div class="answers-grid">
+    <details><summary>Who can send a property?</summary><p>Real estate professionals can suggest sale or rental listings. No account or brokerage affiliation is required. New contacts are verified before coordination.</p></details>
+    <details><summary>Does submitting reserve a time?</summary><p>No. A listing goes on my radar for review. I assess fit, location and access before requesting an appointment through the normal showing process.</p></details>
+    <details><summary>When do open houses happen?</summary><p>Weekdays are the priority. Evenings and weekends may occasionally be considered, but requests do not include preferred time slots.</p></details>
+    <details><summary>What properties are a good fit?</summary><p>Vacant, clean, maintained, and show-ready listings are easiest. Investor or as-is properties can be considered when conditions and safety concerns are disclosed.</p></details>
+    <details><summary>How long is an open house?</summary><p>The usual starting point is a 15–30-minute window. I group nearby stops and aim to request appointments at least 72 hours ahead when possible.</p></details>
+    <details><summary>Who registers the MLS event?</summary><p>Once an appointment is approved, the listing contact registers the matching open house in the MLS. My planning checkpoint is 6 p.m. the evening before—not an MLS-wide rule.</p></details>
+    <details><summary>What if access is unusual?</summary><p>Flag pets, occupancy, rough conditions, possible waivers, or lockbox quirks. Never put entry codes, alarm credentials, or private occupant information in this form.</p></details>
+    <details><summary>Will I get a guaranteed booking?</summary><p>No guarantees. The goal is practical collaboration: better-planned days and more opportunities to connect properties with future occupants.</p></details>
+  </div>
+  <div class="answers-action"><span>Have a possible listing?</span><a class="btn" href="#request">Add it to the radar ↗</a></div>
+</div></section>
 <section class="section" id="process"><div class="wrap">
   <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">Simple steps, clear roles, and enough lead time to turn a possibility into a well-coordinated open house.</p></div></div>
   <div class="progress-caption">First, we get it on the radar</div>
@@ -308,7 +373,8 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   <p class="pet-note">The portraits are based on the dogs’ real photographs. The autumn collection is intentionally still, with no autoplay or timed changes.</p>
 </div></section>
 <section class="section" id="request"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone, and MLS number(s) get the request started. Extra details help me assess fit. Submitting does not reserve a date or time.</p></div></div>
+  <div class="section-head public-request-title"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone, and MLS number(s) get the request started. Extra details help me assess fit. Submitting does not reserve a date or time.</p></div></div>
+  <div class="partner-request-title"><p class="eyebrow">Your direct line · Open House(s)</p><h2>Another listing? <em>I've got you.</em></h2><p>Five quick fields, an optional heads-up, and you’re done. I'll review the opportunity and handle scheduling through the usual channels.</p><p class="partner-region-hint">Bright MLS is preselected for convenience. Different MLS? Open the optional details below.</p></div>
   <div class="form-shell">
   <form name="open-house-requests" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" id="listing-form">
     <input type="hidden" name="form-name" value="open-house-requests">
@@ -322,10 +388,13 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
       <label class="field">Your name <span class="req">*</span><input class="input" name="contact_name" required autocomplete="name" maxlength="100" placeholder="First and last name"></label>
       <label class="field">Email <span class="req">*</span><input class="input" name="email" type="email" required autocomplete="email" maxlength="180" placeholder="you@example.com"></label>
       <label class="field">Phone number <span class="req">*</span><input class="input" name="phone" type="tel" required autocomplete="tel" maxlength="35" placeholder="Best number to reach you"></label>
-      <label class="field">MLS area <span class="req">*</span><select name="mls_area" class="input" id="mls-area" required><option value="">Select a region</option><option value="Bright MLS">Bright MLS</option><option value="Other MLS">Another MLS / region</option><option value="Not sure">Not sure</option></select></label>
+      <label class="field" id="mls-area-field">MLS area <span class="req">*</span><select name="mls_area" class="input" id="mls-area" required><option value="">Select a region</option><option value="Bright MLS">Bright MLS</option><option value="Other MLS">Another MLS / region</option><option value="Not sure">Not sure</option></select></label>
       <label class="field full" id="other-region-wrap" hidden>Other MLS / region<input class="input" name="other_mls_region" id="other-region" placeholder="Which MLS or area? (if known)" maxlength="100"></label>
       <label class="field full">MLS number(s) <span class="req">*</span><textarea class="input" name="mls_numbers" id="mls-numbers" required maxlength="1300" placeholder="One per line, or separated by commas. Add up to 25 listings."></textarea><span class="hint" id="mls-counter">One required; up to 25. Please use MLS IDs, not lockbox codes.</span></label>
     </div>
+    <details class="optional-sections" id="optional-sections" open>
+      <summary>Additional property details (optional)</summary>
+      <div class="extras-body">
     <h3 class="form-section-title">02 — Quick context</h3>
     <div class="fields">
       <label class="field">Property type<select class="input" name="property_type"><option value="Not specified">Choose if helpful</option><option value="Sale">For sale</option><option value="Rental">For rent</option><option value="Mixed">Both / multiple property types</option></select></label>
@@ -356,6 +425,7 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
     <details><summary>The lockbox game (optional bonus round)</summary><div class="inner">
       <label class="field">Any odd little access quirks?<textarea class="input" name="access_quirks" maxlength="500" placeholder="Example: The lock sticks; jiggle left–right, not up–down."></textarea></label>
       <p class="safety"><strong>Safety note:</strong> Do not enter lockbox combinations, alarm codes, door codes, or sensitive entry credentials. Put those only in the authorized scheduling / showing system.</p>
+    </div></details>
     </div></details>
     <div style="height:16px"></div>
     <label class="field">Anything else I should know? <span class="light">(Optional)</span><textarea class="input" name="notes" maxlength="1200" placeholder="A heads-up, a quirk, an FYI, or something future-me will be grateful you mentioned. No novel required."></textarea><span class="hint">Helpful context only. Please avoid personal or sensitive occupant information.</span></label>
@@ -417,6 +487,16 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   if(referral){
     document.body.classList.add('is-relationship');
     document.getElementById('relationship-note').hidden=false;
+    // The same Netlify request form powers both layouts.
+    // Keep MLS region available in expandable extras, default Bright for DE.
+    const extra=document.getElementById('optional-sections');
+    const extraFields=extra.querySelector('.extras-body .fields');
+    const areaField=document.getElementById('mls-area-field');
+    const otherField=document.getElementById('other-region-wrap');
+    extraFields.prepend(otherField);
+    extraFields.prepend(areaField);
+    area.value='Bright MLS';
+    extra.open=false;
   }
   document.getElementById('partner-token').value=referral;
   document.getElementById('submission-source').value=referral ? 'shared-link' : 'website';
@@ -455,7 +535,7 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
       const body=new URLSearchParams(new FormData(form));
       const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()});
       if(!response.ok)throw Error('Submission service returned '+response.status);
-      form.reset();syncArea();counter.textContent='One required; up to 25. Please use MLS IDs, not lockbox codes.';
+      form.reset();if(referral)area.value='Bright MLS';syncArea();counter.textContent='One required; up to 25. Please use MLS IDs, not lockbox codes.';
       msg.className='message ok show';msg.textContent=`Request sent! Your ${ids.length} listing${ids.length===1?' is':'s are'} on the radar for review.${review.length?' The heads-up details were tagged for follow-up.':''} This is not an appointment confirmation.`;
       msg.scrollIntoView({behavior:'smooth',block:'center'});
     }catch(error){msg.className='message err show';msg.textContent='The request could not be confirmed. Your entries are still here — please try again or contact me directly. ('+error.message+')';msg.scrollIntoView({behavior:'smooth',block:'center'});}
