@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#080a13">
-  <meta name="description" content="Add a sale or rental listing to the radar for a possible weekday open house. Simple requests, thoughtful route planning, and clearer MLS coordination.">
-  <title>Open House(s) | Mythic Housing</title>
+  <meta name="description" content="Open House Relay helps internal and external real estate agents collaborate on weekday open houses with simple MLS submissions, thoughtful routes and clear coordination.">
+  <title>Open House Relay | Agent Collaboration &amp; Weekday Open Houses</title>
   <style>
   :root { --bg:#0b0811; --card:#15101f; --card2:#1b1329; --line:rgba(207,181,255,.19); --text:#fdfaff; --muted:#c0b6cd; --faint:#9386a3; --purple:#b278ff; --purple2:#8b46ee; --purple3:#d9b8ff; --warning:#ffd28a; --ok:#b7eccc; --radius:22px; }
   *,*::before,*::after{box-sizing:border-box}
@@ -274,22 +275,79 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
 .is-relationship .form-actions{margin-top:24px}
 .is-relationship .footer{padding:24px 0}
 @media(max-width:680px){.answers-grid{grid-template-columns:1fr}.is-relationship .relationship-dogs{grid-template-columns:1fr 1fr}.relationship-paw{display:none}.relationship-dogs figure img{height:140px}.is-relationship #listing-form>.fields{grid-template-columns:1fr}.is-relationship .hero{padding:22px 0}.is-relationship #request{padding:20px 0 45px}.is-relationship .form-shell{padding:20px}}
+
+/* Open House Relay themes: follow device preference until user explicitly chooses */
+.relay-highlight{color:#d7b3ff}
+.nav-right{display:flex;align-items:center;gap:13px;min-width:0}
+.theme-switch{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;border-radius:999px;border:1px solid #9973b8;color:#fff;background:#23162f;padding:9px 13px;min-height:41px;font-size:.78rem;font-weight:760}
+.theme-switch:focus-visible{outline:3px solid #dbbdf5;outline-offset:3px}
+.theme-switch:hover{background:#412854}
+.relay-subtitle{margin:15px 0;color:#e2caff;font-size:clamp(1rem,1.55vw,1.22rem);font-weight:680;max-width:750px}
+html[data-theme="light"]{color-scheme:light;--bg:#f7f5fb;--card:#ffffff;--card2:#efe7f8;--line:rgba(84,58,110,.24);--text:#261d31;--muted:#50455c;--faint:#645770;--purple:#6120a7;--purple2:#6420a4;--purple3:#52218a;--warning:#885000;--ok:#15663f}
+html[data-theme="light"] body{background:var(--bg);color:var(--text)}
+html[data-theme="light"] body::before{background:radial-gradient(circle at 88% 8%,rgba(154,108,201,.13),transparent 34%)}
+html[data-theme="light"] .topbar{background:rgba(255,255,255,.95);border-color:var(--line)}
+html[data-theme="light"] .logo,html[data-theme="light"] .navlinks a:not(.btn){color:#2a1839}
+html[data-theme="light"] .relay-highlight{color:#6826a4}
+html[data-theme="light"] .theme-switch{background:#ebdff7;color:#381853;border-color:#ac90c7}
+html[data-theme="light"] .theme-switch:hover{background:#dfccf2}
+html[data-theme="light"] .hero h1,html[data-theme="light"] h2,html[data-theme="light"] h3,html[data-theme="light"] .glass-title{color:#24162f}
+html[data-theme="light"] .hero .lead,html[data-theme="light"] .relay-subtitle,html[data-theme="light"] .meta,html[data-theme="light"] .sub,html[data-theme="light"] .extras-intro{color:#51475b}
+html[data-theme="light"] .eyebrow{color:#6823a5}
+html[data-theme="light"] .glass{background:linear-gradient(155deg,#fff,#f1eafa);border-color:#d4bee8;box-shadow:0 20px 60px #4f28731a}
+html[data-theme="light"] .glass small,html[data-theme="light"] .feature p,html[data-theme="light"] .step p,html[data-theme="light"] .time-card p{color:#50445e}
+html[data-theme="light"] .section.alt{background:#f0ebf7}
+html[data-theme="light"] .feature,html[data-theme="light"] .time-card,html[data-theme="light"] .note-card,html[data-theme="light"] .step,html[data-theme="light"] .answers-grid details{background:#fff;color:#24192e;border-color:#d2bfe4;box-shadow:none}
+html[data-theme="light"] .form-shell,html[data-theme="light"] .additional-panel{background:linear-gradient(160deg,#fff,#f2ecf9);border-color:#cab0e4;box-shadow:0 16px 45px #50356d12}
+html[data-theme="light"] .input,html[data-theme="light"] input:not([type="checkbox"]):not([type="radio"]),html[data-theme="light"] select,html[data-theme="light"] textarea{background:#fff;color:#21162f;border-color:#ad91c4}
+html[data-theme="light"] input::placeholder,html[data-theme="light"] textarea::placeholder{color:#71657c;opacity:1}
+html[data-theme="light"] label,html[data-theme="light"] .field,html[data-theme="light"] .hint,html[data-theme="light"] .form-note,html[data-theme="light"] .additional-panel p,html[data-theme="light"] .progress-caption{color:#3a2e43}
+html[data-theme="light"] .footer{background:#ebe5f4;color:#50455a;border-color:#cdbcdc}
+html[data-theme="light"] .footer strong{color:#2d1b40!important}
+html[data-theme="light"] .season-break{background:linear-gradient(90deg,#eee4f7,#f4e9df);color:#342640}
+html[data-theme="light"] .season-break strong,html[data-theme="light"] .season-break p{color:#382b43}
+html[data-theme="light"] .btn.ghost{color:#4b206f;border-color:#aa8bbe}
+html[data-theme="light"] .chip{background:#efe5f8;color:#3c1e5b;border-color:#d9c8e8}
+html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .autumn-stills figcaption,html[data-theme="light"] .pet-note{color:#48394f}
+@media(max-width:850px){.nav-right{gap:8px}}
+@media(max-width:580px){.logo{letter-spacing:.04em}.nav-right{gap:6px}.theme-switch{padding:7px 9px;font-size:.69rem;min-height:37px}}
+
 </style>
 </head>
 <body>
+<script>
+(function(){
+  const toggle=document.getElementById('theme-switch');if(!toggle)return;
+  const root=document.documentElement,key='open-house-relay-theme';
+  let stored=null;try{stored=localStorage.getItem(key)}catch(e){}
+  const systemLight=!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches);
+  let current=stored==='light'||stored==='dark'?stored:(systemLight?'light':'dark');
+  function render(){
+    root.setAttribute('data-theme',current);
+    const light=current==='light';
+    toggle.setAttribute('aria-label','Switch to '+(light?'dark':'light')+' appearance');
+    toggle.setAttribute('aria-pressed',String(light));
+    toggle.querySelector('.theme-symbol').textContent=light?'☾':'☀';
+    toggle.querySelector('.theme-text').textContent=light?'Dark':'Light';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',light?'#f7f5fb':'#080a13');
+  }
+  render();
+  toggle.addEventListener('click',()=>{current=current==='light'?'dark':'light';try{localStorage.setItem(key,current)}catch(e){}render()});
+})();
+</script>
 <header class="topbar"><div class="wrap nav">
-  <a class="logo" href="#top" aria-label="Mythic Housing home"><span class="logo-mark" aria-hidden="true">⌂</span> MYTHIC HOUSING</a>
-  <nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#doggos">Doggos</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav>
+  <a class="logo" href="#top" aria-label="Open House Relay home"><span class="logo-mark" aria-hidden="true">⌂</span> OPEN HOUSE <span class="relay-highlight">RELAY</span></a>
+  <div class="nav-right"><button type="button" id="theme-switch" class="theme-switch" aria-label="Switch to light appearance" aria-pressed="false" title="Change appearance"><span class="theme-symbol" aria-hidden="true">☀</span><span class="theme-text">Light</span></button><nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#doggos">Doggos</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav></div>
 </div></header>
 <main id="top">
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
-    <div><p class="eyebrow">Open House(s) · Weekdays first</p>
+    <div><p class="eyebrow">Internal &amp; external agent collaboration · Weekdays first</p>
       <div class="relationship-note" id="relationship-note" hidden><strong>Good to see you again.</strong> Thank you for continuing to collaborate. Keep it simple: send the MLS number(s), share any helpful heads-up, and I’ll review the possibilities.</div>
-      <h1 id="hero-title">More doors open.<br><span>Less calendar chaos.</span></h1>
-      <p class="lead">Have a sale or rental listing worth considering for a weekday open house? Add it to my radar. Together, we can organize promising properties into efficient routes, creating more structured days and more opportunities to connect properties with future occupants.</p>
+      <h1 id="hero-title">More doors open.<br><span>Less calendar chaos.</span></h1><p class="relay-subtitle">A shared space for real estate professionals to coordinate weekday open-house opportunities.</p>
+      <p class="lead">Have a sale or rental listing that could benefit from an open house? Internal colleagues and external agents can submit a possibility here. I review property fit, group practical weekday routes, and coordinate appointments through the usual approved showing process. Together, we create more structured days and more opportunities to connect properties with future buyers or renters.</p>
       <div class="hero-actions"><a class="btn" href="#request">Add a listing to my radar <span aria-hidden="true">↗</span></a><a class="btn ghost" href="#process">See the process</a></div>
-      <p class="meta">Requests are possibilities, not confirmed appointments. No preferred times needed. Browsing never requires registration.</p>
+      <p class="meta">For real estate professionals · No account required · Submitting is not a confirmed appointment.</p>
       <div class="relationship-dogs" aria-label="A hello from the unofficial welcome committee">
         <figure><img src="assets/fancy-portrait.webp" alt="Fancy in an autumn field" loading="lazy"><figcaption>Fancy says welcome back.</figcaption></figure>
         <figure><img src="assets/bougie-portrait.webp" alt="Bougie with alert ears beside the water" loading="lazy"><figcaption>Bougie is considering adopting you.</figcaption></figure>
@@ -306,9 +364,9 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   </div>
 </section>
 <section class="section public-answers" id="quick-answers" aria-labelledby="quick-answers-title"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Good to know · Before you send a listing</p><h2 id="quick-answers-title">The quick answers. <em>No guessing.</em></h2><p class="sub">What this is, how it works, and what to expect—without an information scavenger hunt.</p></div></div>
+  <div class="section-head"><div><p class="eyebrow">For internal colleagues and external collaborators</p><h2 id="quick-answers-title">The quick answers. <em>No guessing.</em></h2><p class="sub">What this is, how it works, and what to expect—without an information scavenger hunt.</p></div></div>
   <div class="answers-grid">
-    <details><summary>Who can send a property?</summary><p>Real estate professionals can suggest sale or rental listings. No account or brokerage affiliation is required. New contacts are verified before coordination.</p></details>
+    <details><summary>Who can send a property?</summary><p>Internal and external licensed real estate professionals can suggest sale or rental listings. No specific brokerage affiliation is required. New contacts are verified before scheduling coordination.</p></details>
     <details><summary>Does submitting reserve a time?</summary><p>No. A listing goes on my radar for review. I assess fit, location and access before requesting an appointment through the normal showing process.</p></details>
     <details><summary>When do open houses happen?</summary><p>Weekdays are the priority. Evenings and weekends may occasionally be considered, but requests do not include preferred time slots.</p></details>
     <details><summary>What properties are a good fit?</summary><p>Vacant, clean, maintained, and show-ready listings are easiest. Investor or as-is properties can be considered when conditions and safety concerns are disclosed.</p></details>
@@ -323,7 +381,7 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   <div class="section-head"><div><p class="eyebrow">Bing. Bang. Boom.</p><h2>The sequence, <em>without the guessing.</em></h2><p class="sub">Simple steps, clear roles, and enough lead time to turn a possibility into a well-coordinated open house.</p></div></div>
   <div class="progress-caption">First, we get it on the radar</div>
   <div class="steps">
-    <article class="step"><span class="circle">1</span><h3>You submit a possibility</h3><p>Send the MLS number(s) and your name, email, and phone. A little context helps; perfection is not required.</p></article>
+    <article class="step"><span class="circle">1</span><h3>An agent shares a listing</h3><p>Internal or external agents send MLS number(s) and contact details. Optional condition and access notes help avoid surprises.</p></article>
     <article class="step"><span class="circle">2</span><h3>I build the route</h3><p>I check the listings, group nearby locations, and account for travel time so the day makes geographic sense (and saves gas).</p></article>
     <article class="step"><span class="circle">3</span><h3>I request an appointment</h3><p>When a listing fits, I aim to send the scheduling request <strong>72 hours or more in advance</strong> so there's time to get the word out.</p></article>
   </div>
@@ -359,7 +417,7 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   <div class="note-card"><div class="emoji" aria-hidden="true">✉</div><div><h3>Know someone who isn't quite ready to buy or rent?</h3><p>Those inquiries matter, too. If someone wants support improving credit or becoming better prepared, I'm happy to help connect them with people and resources that may be useful. Please ask their permission before sharing contact information. No promises, pressure, or judgments — just a possible next step. <a href="mailto:Schmid@danlogan.com?subject=Resource%20connection%20inquiry">Start a conversation</a>.</p></div></div>
 </div></section>
 <section class="section season-gallery" id="doggos" aria-labelledby="dog-title"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Autumn portraits · Three familiar personalities</p><h2 id="dog-title">Meet the <em>unofficial welcome committee.</em></h2><p class="sub">A little fall color, a lot of personality, and the same goal: coordinated open houses that connect properties with their next occupants.</p></div></div>
+  <div class="section-head"><div><p class="eyebrow">Autumn portraits · Three familiar personalities</p><h2 id="dog-title">Meet the <em>unofficial welcome committee.</em></h2><p class="sub">The dogs provide moral support. Agents bring the listings. Thoughtful scheduling helps everyone work together.</p></div></div>
   <div class="autumn-stills" aria-label="Fall dog photography">
     <figure><img src="assets/season-autumn-portrait.webp" width="1160" height="828" alt="Black-and-white dog enjoying a quiet autumn clearing among trees" loading="lazy"><figcaption><strong>Pause for the possibilities.</strong> A thoughtful route leaves room for the details that matter.</figcaption></figure>
     <figure><img src="assets/season-autumn-run.webp" width="1160" height="828" alt="Black-and-white dog running through golden autumn grass" loading="lazy"><figcaption><strong>Then put a little momentum behind them.</strong> Clear communication makes better days for everyone.</figcaption></figure>
@@ -373,7 +431,7 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   <p class="pet-note">The portraits are based on the dogs’ real photographs. The autumn collection is intentionally still, with no autoplay or timed changes.</p>
 </div></section>
 <section class="section" id="request"><div class="wrap">
-  <div class="section-head public-request-title"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Name, email, phone, and MLS number(s) get the request started. Extra details help me assess fit. Submitting does not reserve a date or time.</p></div></div>
+  <div class="section-head public-request-title"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Whether you are an internal colleague or an external real estate agent, start with name, email, phone and MLS number(s). Extra details help assess fit; submitting does not reserve a date or time.</p></div></div>
   <div class="partner-request-title"><p class="eyebrow">Your direct line · Open House(s)</p><h2>Another listing? <em>I've got you.</em></h2><p>Five quick fields, an optional heads-up, and you’re done. I'll review the opportunity and handle scheduling through the usual channels.</p><p class="partner-region-hint">Bright MLS is preselected for convenience. Different MLS? Open the optional details below.</p></div>
   <div class="form-shell">
   <form name="open-house-requests" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" id="listing-form">
@@ -468,7 +526,7 @@ label.field .hint,.hint-inline,.light,.safety{font-size:.92rem;color:#cbd3e8}
   </form>
 </div></section>
 </main>
-<footer class="footer"><div class="wrap footer-inner"><div><strong style="color:#fff">MYTHIC HOUSING · OPEN HOUSE(S)</strong><div>Weekdays first · Real properties · Realistic routes · Submissions are reviewed</div></div><div class="contact-list"><span>Schmid</span><a href="tel:+17034036706">(703) 403-6706</a><a href="mailto:Schmid@danlogan.com">Email</a></div></div></footer>
+<footer class="footer"><div class="wrap footer-inner"><div><strong style="color:#fff">OPEN HOUSE RELAY · AGENT COLLABORATION</strong><div>Weekdays first · Real properties · Realistic routes · Submissions are reviewed</div></div><div class="contact-list"><span>Schmid</span><a href="tel:+17034036706">(703) 403-6706</a><a href="mailto:Schmid@danlogan.com">Email</a></div></div></footer>
 <script>
 (()=>{
   const form=document.getElementById('listing-form');
