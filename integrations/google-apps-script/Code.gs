@@ -57,7 +57,9 @@ function doPost(e) {
     if (!queue) return reply_({ok:false,error:"Request Queue tab missing"});
     const received = new Date(body.received_at || "");
     const receivedAt = isNaN(received.getTime()) ? new Date() : received;
-    const requestId = trim_(data.request_id,90) || "relay-" + Utilities.getUuid();
+    const requestId = trim_(data.request_id,90) || "relay-" + Utilities.computeDigest(
+      Utilities.DigestAlgorithm.SHA_256, JSON.stringify(data), Utilities.Charset.UTF_8
+    ).slice(0,12).map(b => ("0"+(b&255).toString(16)).slice(-2)).join("");
     const current = queue.getRange(2,1,queue.getMaxRows()-1,3).getDisplayValues();
     const existing = new Set();
     const free = [];
