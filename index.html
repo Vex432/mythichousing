@@ -388,13 +388,16 @@
   handleSimpleForm('updates-form','updates-message');
 </script>
 <script>
-/* Only the fallback for missing portrait images remains; no image rotation. */
+/* Preserve native lazy loading: never hide an image while it is still loading.
+   Only show fallback if the image actually fails. */
 document.querySelectorAll('.season-dog-img img').forEach(img=>{
   const fallback=img.nextElementSibling;
-  const update=()=>{const loaded=img.complete && img.naturalWidth>0; img.hidden=!loaded; if(fallback)fallback.hidden=loaded;};
-  img.addEventListener('load',update);
-  img.addEventListener('error',update);
-  update();
+  const showFallback=()=>{
+    img.hidden=true;
+    if(fallback)fallback.hidden=false;
+  };
+  img.addEventListener('error',showFallback);
+  if(img.complete && img.naturalWidth===0)showFallback();
 });
 </script>
 </body>
