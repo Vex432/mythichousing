@@ -315,6 +315,10 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
 </style>
 </head>
 <body>
+<header class="topbar"><div class="wrap nav">
+  <a class="logo" href="#top" aria-label="Open House Relay home"><span class="logo-mark" aria-hidden="true">⌂</span> OPEN HOUSE <span class="relay-highlight">RELAY</span></a>
+  <div class="nav-right"><button type="button" id="theme-switch" class="theme-switch" aria-label="Switch to light appearance" aria-pressed="false" title="Change appearance"><span class="theme-symbol" aria-hidden="true">☀</span><span class="theme-text">Light</span></button><nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#doggos">Doggos</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav></div>
+</div></header>
 <script>
 (function(){
   const toggle=document.getElementById('theme-switch');if(!toggle)return;
@@ -335,10 +339,6 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
   toggle.addEventListener('click',()=>{current=current==='light'?'dark':'light';try{localStorage.setItem(key,current)}catch(e){}render()});
 })();
 </script>
-<header class="topbar"><div class="wrap nav">
-  <a class="logo" href="#top" aria-label="Open House Relay home"><span class="logo-mark" aria-hidden="true">⌂</span> OPEN HOUSE <span class="relay-highlight">RELAY</span></a>
-  <div class="nav-right"><button type="button" id="theme-switch" class="theme-switch" aria-label="Switch to light appearance" aria-pressed="false" title="Change appearance"><span class="theme-symbol" aria-hidden="true">☀</span><span class="theme-text">Light</span></button><nav class="navlinks" aria-label="Main navigation"><a href="#process">How it works</a><a href="#doggos">Doggos</a><a href="#dates">Dates &amp; times</a><a href="#notes">Good to know</a><a href="#partner">Partner interest</a><a href="#updates">Updates</a><a class="btn small" href="#request">Add a listing ↗</a></nav></div>
-</div></header>
 <main id="top">
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
