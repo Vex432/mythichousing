@@ -40,12 +40,13 @@ function doPost(e) {
     const sharedKey = props.getProperty("RELAY_SYNC_KEY");
     if (!sharedKey || sharedKey.length < 40 || body.secret !== sharedKey)
       return reply_({ok:false,error:"Unauthorized"});
-    if (body.form !== "open-house-requests")
+    if (!["open-house-requests","partner-interest","open-house-updates"].includes(body.form))
       return reply_({ok:false,error:"Unexpected form"});
     const sheetId = props.getProperty("RELAY_SHEET_ID");
     if (!sheetId) return reply_({ok:false,error:"Run authorizeRelay first."});
 
     const data = body.data && typeof body.data === "object" ? body.data : {};
+    if (body.form !== "open-house-requests") return storeExtraForm_(body, sheetId, data);
     const ids = String(data.mls_numbers || "").split(/[\s,;]+/).map(s=>s.trim()).filter(Boolean);
     if (!ids.length || ids.length > 25) return reply_({ok:false,error:"Expected 1–25 listings"});
     if (!trim_(data.contact_name,100) || !trim_(data.email,180))
@@ -133,4 +134,66 @@ function asLiteral_(value) {
 function reply_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Cloudflare Pages secondary forms. Keep them separate from the Request Queue
+ * and from the Agent Contacts sheet used for vetted operational contacts.
+ * Tabs are created only after a valid, authorized submission arrives.
+ */
+function storeExtraForm_(body, sheetId, data) {
+  let lock;
+  try {
+    const isSignup = body.form === "open-house-updates";
+    const name = trim_(data.name, 90);
+    const email = trim_(data.email, 180).toLowerCase();
+    const phone = trim_(data.phone, 35);
+    const notes = trim_(data.notes, 1000);
+    const optedIn = String(data.marketing_opt_in || "") === "Yes";
+    const submissionId = trim_(data.submission_id, 90);
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      return reply_({ok:false,error:"Valid email required"});
+    if (!isSignup && !name)
+      return reply_({ok:false,error:"Contact name required"});
+    if (isSignup && !optedIn)
+      return reply_({ok:false,error:"Explicit opt-in required"});
+    lock = LockService.getScriptLock();
+    if (!lock.tryLock(25000)) return reply_({ok:false,error:"Inbox temporarily busy"});
+
+    const book = SpreadsheetApp.openById(sheetId);
+    const tabName = isSignup ? "Updates Opt-ins" : "Partner Inquiries";
+    let sheet = book.getSheetByName(tabName);
+    const headings = isSignup
+      ? ["Received", "Name", "Email", "Consent", "Submission ID", "Status"]
+      : ["Received", "Name", "Email", "Phone", "Notes", "Marketing opt-in", "Submission ID", "Status"];
+    if (!sheet) {
+      sheet = book.insertSheet(tabName);
+      sheet.getRange(1, 1, 1, headings.length).setValues([headings]);
+      sheet.getRange(1, 1, 1, headings.length).setFontWeight("bold");
+      sheet.setFrozenRows(1);
+    }
+
+    const last = sheet.getLastRow();
+    if (last > 1) {
+      const rows = sheet.getRange(2, 1, last - 1, headings.length).getDisplayValues();
+      const duplicate = rows.some(r => isSignup
+        ? r[2].trim().toLowerCase() === email
+        : !!submissionId && r[6] === submissionId);
+      if (duplicate) return reply_({ok:true,rows:0,duplicates:1});
+    }
+    const date = new Date(body.received_at || "");
+    const received = isNaN(date.getTime()) ? new Date() : date;
+    const values = isSignup
+      ? [received, name, email, "Yes", submissionId, "Subscribed"]
+      : [received, name, email, phone, notes, optedIn ? "Yes" : "No", submissionId, "New"];
+    sheet.appendRow(values.map((v, i) => i === 0 ? v : asLiteral_(v)));
+    sheet.getRange(sheet.getLastRow(), 1).setNumberFormat("yyyy-mm-dd hh:mm");
+    SpreadsheetApp.flush();
+    return reply_({ok:true,rows:1,duplicates:0});
+  } catch (err) {
+    console.error("Extra form sync failed: " + String(err && err.message || "Unknown").slice(0, 180));
+    return reply_({ok:false,error:"Processing failed; see Apps Script executions"});
+  } finally {
+    if (lock) try { lock.releaseLock(); } catch(ignore) {}
+  }
 }
