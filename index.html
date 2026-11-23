@@ -434,7 +434,7 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
   <div class="section-head public-request-title"><div><p class="eyebrow">Put it on the radar</p><h2>Have a listing in mind? <em>Send it over.</em></h2><p class="sub">Whether you are an internal colleague or an external real estate agent, start with name, email, phone and MLS number(s). Extra details help assess fit; submitting does not reserve a date or time.</p></div></div>
   <div class="partner-request-title"><p class="eyebrow">Your direct line · Open House(s)</p><h2>Another listing? <em>I've got you.</em></h2><p>Five quick fields, an optional heads-up, and you’re done. I'll review the opportunity and handle scheduling through the usual channels.</p><p class="partner-region-hint">Bright MLS is preselected for convenience. Different MLS? Open the optional details below.</p></div>
   <div class="form-shell">
-  <form name="open-house-requests" method="POST" action="/success" data-netlify="true" netlify-honeypot="website" id="listing-form">
+  <form name="open-house-requests" method="POST" action="/api/submit" id="listing-form">
     <input type="hidden" name="form-name" value="open-house-requests">
     <input type="hidden" name="review_status" id="review-status" value="REVIEW HIGHLIGHT">
     <input type="hidden" name="review_flags" id="review-flags" value="Public website: verify submitter">
@@ -497,7 +497,7 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
   <p class="eyebrow">Open House(s) · New connections welcome</p>
   <h2>Interested in working together? <em>Say hello.</em></h2>
   <p class="extras-intro">You don't need a personal link or approval to add a property to the radar above. This separate form is simply for starting a conversation, and you're welcome to browse without registering.</p>
-  <form class="additional-panel" id="partner-interest-form" name="partner-interest" method="POST" action="/success" data-netlify="true" netlify-honeypot="website">
+  <form class="additional-panel" id="partner-interest-form" name="partner-interest" method="POST" action="/api/submit">
     <input type="hidden" name="form-name" value="partner-interest"><p class="hide"><label>Leave this empty: <input name="website" tabindex="-1" autocomplete="off"></label></p>
     <div class="fields">
       <label class="field">Your name <span class="req">*</span><input class="input" name="name" required maxlength="90" autocomplete="name" placeholder="Your name"></label>
@@ -514,7 +514,7 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
   <p class="eyebrow">Open House(s) · Opt in only</p>
   <h2>Stay in the loop. <em>Only if you want to.</em></h2>
   <p class="extras-intro">Occasional open-house news and opportunities. No account is required and no one is signed up simply by visiting.</p>
-  <form class="additional-panel" id="updates-form" name="open-house-updates" method="POST" action="/success" data-netlify="true" netlify-honeypot="website">
+  <form class="additional-panel" id="updates-form" name="open-house-updates" method="POST" action="/api/submit">
     <input type="hidden" name="form-name" value="open-house-updates"><p class="hide"><label>Leave this empty: <input name="website" tabindex="-1" autocomplete="off"></label></p>
     <div class="fields">
       <label class="field">Name (optional)<input class="input" name="name" maxlength="90" autocomplete="name" placeholder="Your name"></label>
@@ -528,6 +528,94 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
 </main>
 <footer class="footer"><div class="wrap footer-inner"><div><strong style="color:#fff">OPEN HOUSE RELAY · AGENT COLLABORATION</strong><div>Weekdays first · Real properties · Realistic routes · Submissions are reviewed</div></div><div class="contact-list"><span>Schmid</span><a href="tel:+17034036706">(703) 403-6706</a><a href="mailto:Schmid@danlogan.com">Email</a></div></div></footer>
 <script>
+/*
+ * Cloudflare Pages form bridge. Turnstile SITE key is fetched dynamically;
+ * all secret keys remain only in Cloudflare's server-side environment.
+ * If configuration is incomplete, forms fail closed rather than pretend to save.
+ */
+const relayGate=(()=>{
+  const formIds=['listing-form','partner-interest-form','updates-form'];
+  const forms=formIds.map(id=>document.getElementById(id)).filter(Boolean);
+  const widgets=new Map();
+  let ready=false;
+  for(const form of forms){
+    const submit=form.querySelector('button[type="submit"]');
+    if(submit)submit.disabled=true;
+    const slot=document.createElement('div');
+    slot.className='relay-verification';
+    slot.style.cssText='margin:16px 0;min-height:64px';
+    const controls=form.querySelector('.form-actions, .control-row');
+    controls?.before(slot);
+    form._relaySlot=slot;
+  }
+  function reset(form){
+    const id=widgets.get(form);
+    if(id!==undefined && window.turnstile)window.turnstile.reset(id);
+  }
+  function done(form){
+    delete form.dataset.relaySubmissionId;
+    reset(form);
+  }
+  async function post(form,body){
+    if(!ready)throw Error('The form connection is not ready yet.');
+    const id=widgets.get(form);
+    const token=id!==undefined ? window.turnstile?.getResponse(id) : '';
+    if(!token)throw Error('Please complete the verification above.');
+    if(!form.dataset.relaySubmissionId){
+      form.dataset.relaySubmissionId=crypto.randomUUID();
+    }
+    body.set('cf-turnstile-response',token);
+    body.set(form.id==='listing-form'?'request_id':'submission_id',form.dataset.relaySubmissionId);
+    const response=await fetch('/api/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:body.toString()
+    });
+    const result=await response.json().catch(()=>({ok:false}));
+    if(!response.ok||!result.ok)throw Error(result.error||'Submission service is unavailable.');
+    return response;
+  }
+  function fail(){
+    for(const form of forms){
+      const note=form.querySelector('#form-message, .form-note');
+      if(note){
+        note.textContent='Online forms are temporarily unavailable while we finish the connection. Please contact us directly.';
+        note.classList.add('show');
+      }
+      form._relaySlot.textContent='Verification will be available once the form service is connected.';
+    }
+  }
+  (async()=>{
+    try{
+      const response=await fetch('/api/public-config',{cache:'no-store'});
+      if(!response.ok)throw Error('Configuration unavailable');
+      const conf=await response.json();
+      if(!conf.ready||!conf.turnstileSiteKey)throw Error('Not yet connected');
+      await new Promise((resolve,reject)=>{
+        const tag=document.createElement('script');
+        tag.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        tag.async=true;
+        tag.onload=resolve;tag.onerror=()=>reject(Error('Verification not available'));
+        document.head.appendChild(tag);
+      });
+      if(!window.turnstile)throw Error('Verification not loaded');
+      for(const form of forms){
+        const id=window.turnstile.render(form._relaySlot,{
+          sitekey:conf.turnstileSiteKey,
+          theme:document.documentElement.getAttribute('data-theme')==='light'?'light':'dark',
+          'response-field':false
+        });
+        widgets.set(form,id);
+      }
+      ready=true;
+      for(const form of forms){
+        const submit=form.querySelector('button[type="submit"]');
+        if(submit)submit.disabled=false;
+      }
+    }catch(err){console.warn('[relay] Forms pending setup');fail();}
+  })();
+  return {post,reset,done};
+})();
 (()=>{
   const form=document.getElementById('listing-form');
   const mls=document.getElementById('mls-numbers');
@@ -545,7 +633,7 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
   if(referral){
     document.body.classList.add('is-relationship');
     document.getElementById('relationship-note').hidden=false;
-    // The same Netlify request form powers both layouts.
+    // The same request form powers both layouts.
     // Keep MLS region available in expandable extras, default Bright for DE.
     const extra=document.getElementById('optional-sections');
     const extraFields=extra.querySelector('.extras-body .fields');
@@ -591,12 +679,12 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
     btn.disabled=true;btn.textContent='Sending…';
     try{
       const body=new URLSearchParams(new FormData(form));
-      const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()});
+      const response=await relayGate.post(form,body);
       if(!response.ok)throw Error('Submission service returned '+response.status);
-      form.reset();if(referral)area.value='Bright MLS';syncArea();counter.textContent='One required; up to 25. Please use MLS IDs, not lockbox codes.';
+      relayGate.done(form);form.reset();if(referral)area.value='Bright MLS';syncArea();counter.textContent='One required; up to 25. Please use MLS IDs, not lockbox codes.';
       msg.className='message ok show';msg.textContent=`Request sent! Your ${ids.length} listing${ids.length===1?' is':'s are'} on the radar for review.${review.length?' The heads-up details were tagged for follow-up.':''} This is not an appointment confirmation.`;
       msg.scrollIntoView({behavior:'smooth',block:'center'});
-    }catch(error){msg.className='message err show';msg.textContent='The request could not be confirmed. Your entries are still here — please try again or contact me directly. ('+error.message+')';msg.scrollIntoView({behavior:'smooth',block:'center'});}
+    }catch(error){relayGate.reset(form);msg.className='message err show';msg.textContent='The request could not be confirmed. Your entries are still here — please try again or contact me directly. ('+error.message+')';msg.scrollIntoView({behavior:'smooth',block:'center'});}
     finally{btn.disabled=false;btn.textContent='Add listing(s) to my radar ↗'}
   });
 })();
@@ -609,10 +697,10 @@ html[data-theme="light"] .season-gallery figcaption,html[data-theme="light"] .au
       btn.disabled=true;btn.textContent='Sending…';msg.classList.remove('show');
       try {
         const body=new URLSearchParams(new FormData(f));
-        const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()});
+        const res=await relayGate.post(f,body);
         if(!res.ok)throw Error('Submission returned '+res.status);
-        f.reset();msg.textContent='Thanks! Your message was received.';msg.classList.add('show');
-      }catch(err){msg.textContent='The submission could not be confirmed. Your entries are still here. Please try again.';msg.classList.add('show')}
+        relayGate.done(f);f.reset();msg.textContent='Thanks! Your message was received.';msg.classList.add('show');
+      }catch(err){relayGate.reset(f);msg.textContent='The submission could not be confirmed. Your entries are still here. Please try again.';msg.classList.add('show')}
       finally{btn.disabled=false;btn.textContent=oldText}
     });
   }
